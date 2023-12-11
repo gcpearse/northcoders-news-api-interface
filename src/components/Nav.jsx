@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <nav>
-      <p className="nav-link">Home</p>
-      <p className="nav-link">News</p>
-      <p className="nav-link">Topics</p>
+      <Link to="/" className="nav-link">Home</Link>
+      <Link to="/news" className="nav-link">News</Link>
+      <Link to="/topics" className="nav-link">Topics</Link>
     </nav>
-  )
-}
+  );
+};
 
 export default Nav;
