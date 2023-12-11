@@ -20,4 +20,13 @@ const getArticleById = async (article_id) => {
   }
 };
 
-export { getArticles, getArticleById };
+const getCommentsByArticleId = async (article_id) => {
+  try {
+    const res = await api.get(`/articles/${article_id}/comments`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId };
