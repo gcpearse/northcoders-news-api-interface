@@ -12,7 +12,7 @@ const Article = ({ article }) => {
         <p id="article-author-time">Published by <b id="article-author-keyword">{article.author}</b> at {article.created_at.match(/\d{2}:\d{2}/)} on {lengthenDate(article.created_at.match(/\d{4}-\d{2}-\d{2}/)[0])}.</p>
         <div className="count-container" id="article-count-container">
           <p>{article.comment_count} comments</p>
-          <p>{article.votes} {formatWord(article.votes)} { }</p>
+          <p>{article.votes} {formatWord(article.votes)}</p>
         </div>
       </li>
       <div className="section-btns">
