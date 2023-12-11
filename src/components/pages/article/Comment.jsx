@@ -8,7 +8,7 @@ const Comment = ({ comment }) => {
       <p id="comment-body">{comment.body}</p>
       <p id="comment-votes">{comment.votes} {formatWord(comment.votes)}</p>
       <div className="section-btns" id="comment-btns">
-        <button id="delete-comment-btn">Delete comment</button>
+        <button id="delete-comment-btn">Delete</button>
         <div>
           <button className="vote-btn upvote-btn">+</button>
           <button className="vote-btn downvote-btn">-</button>

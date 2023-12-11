@@ -127,21 +127,21 @@ ul {
 #article-topic,
 #article-topic-keyword,
 #article-title,
-#article-author-time {
+#article-author-info,
+#single-article-topic,
+#single-article-title,
+#single-article-author,
+#single-article-time,
+#comments-header,
+#comment-author,
+#comment-time {
   text-align: start;
-}
-
-#article-topic-keyword {
-  border-radius: 10px;
-  padding: 0.2em 0.6em 0.3em;
-  background: #FECF8C;
-  font-size: 0.95rem;
 }
 
 #article-title {
   margin: 1.1em auto;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 #article-img {
@@ -152,7 +152,7 @@ ul {
   width: 300px;
 }
 
-#article-author-time {
+#article-author-info {
   font-size: 0.9rem;
 }
 
@@ -186,14 +186,12 @@ ul {
 }
 
 #view-article-btn:hover,
-#add-comment-btn:hover,
-#delete-comment-btn:hover {
+#add-comment-btn:hover {
   background: #CFD5D5;
 }
 
 #view-article-btn:active,
-#add-comment-btn:active,
-#delete-comment-btn:active {
+#add-comment-btn:active {
   background: #B8BFC2;
 }
 
@@ -218,7 +216,8 @@ ul {
   background: #DCFBD7;
 }
 
-.downvote-btn:hover {
+.downvote-btn:hover,
+#delete-comment-btn:hover {
   background: #F9D9DB;
 }
 
@@ -226,11 +225,12 @@ ul {
   background: #BBF7B2;
 }
 
-.downvote-btn:active {
+.downvote-btn:active,
+#delete-comment-btn:active {
   background: #F6B4BA;
 }
 
-/* Article Page */
+/* Single Article Page */
 
 #single-article {
   margin: 1em auto;
@@ -240,16 +240,6 @@ ul {
   background: #FDFFFC;
   height: auto;
   max-width: 85%;
-}
-
-#single-article-topic,
-#single-article-title,
-#single-article-author,
-#single-article-time,
-#comments-header,
-#comment-author,
-#comment-time {
-  text-align: start;
 }
 
 .topic-keyword {
@@ -262,7 +252,7 @@ ul {
 #single-article-title {
   margin: 1.2em auto 0.7em;
   font-weight: 500;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
 #single-article-author {
@@ -272,14 +262,14 @@ ul {
 }
 
 #single-article-body {
-  margin: 1.2em auto;
+  margin: 1.5em auto;
   text-align: justify;
   font-size: 0.9rem;
   line-height: 1.2rem;
 }
 
 #single-article-time {
-  margin: 1.6em auto 1.4em;
+  margin: 1em auto;
   font-size: 0.9rem;
 }
 
@@ -288,7 +278,7 @@ ul {
 }
 
 #single-article-btns {
-  padding: 0.6em 0 1.6em;
+  padding: 0.6em 0 2em;
   border-bottom: 2px solid #D3D8D9;
 }
 
@@ -308,7 +298,7 @@ ul {
 }
 
 #comments-header {
-  margin: 1em auto 0;
+  margin: 1.3em auto 0;
   padding-left: 0.5em;
   font-weight: 500;
 }
