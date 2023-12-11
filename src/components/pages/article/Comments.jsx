@@ -24,8 +24,6 @@ const Comments = ({ article_id }) => {
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
 
-  console.log(comments);
-
   return (
     <section>
       <h3 id="comments-header">Comments</h3>
