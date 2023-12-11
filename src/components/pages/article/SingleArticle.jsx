@@ -30,12 +30,12 @@ const SingleArticle = () => {
   return (
     <section>
       <div id="single-article">
-        <p id="single-article-topic"><span id="single-article-topic-keyword">{singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}</span></p>
+        <p id="single-article-topic"><span className="topic-keyword">{singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}</span></p>
         <h2 id="single-article-title">{singleArticle.title}</h2>
         <p id="single-article-author">{singleArticle.author}</p>
         <p id="single-article-body">{singleArticle.body}</p>
         <p id="single-article-time">{singleArticle.created_at.match(/\d{2}:\d{2}/)} on {lengthenDate(singleArticle.created_at.match(/\d{4}-\d{2}-\d{2}/)[0])}</p>
-        <div id="single-article-count-container">
+        <div className="count-container" id="single-article-count-container">
           <p className="article-comment-count">{singleArticle.comment_count} comments</p>
           <p className="article-votes">{singleArticle.votes} {formatWord(singleArticle.votes)} { }</p>
         </div>
