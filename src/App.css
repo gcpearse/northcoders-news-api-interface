@@ -127,7 +127,7 @@ ul {
 #article-topic,
 #article-topic-keyword,
 #article-title,
-.article-author-time {
+#article-author-time {
   text-align: start;
 }
 
@@ -152,7 +152,7 @@ ul {
   width: 300px;
 }
 
-.article-author-time {
+#article-author-time {
   font-size: 0.9rem;
 }
 
@@ -171,15 +171,14 @@ ul {
   margin: 1em auto;
 }
 
-.article-btns,
-.single-article-btns,
-.comment-btns {
+.section-btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#view-article-btn, #delete-comment-btn {
+#view-article-btn,
+#delete-comment-btn {
   border: none;
   border-radius: 15px;
   padding: 0.35em 0.7em 0.4em;
@@ -220,7 +219,7 @@ ul {
 
 /* Article Page */
 
-.single-article {
+#single-article {
   margin: 1em auto;
   border: 2px solid #D3D8D9;
   border-radius: 4px;
@@ -275,7 +274,7 @@ ul {
   margin: auto auto 0.6em;
 }
 
-.single-article-btns {
+#single-article-btns {
   padding: 0.6em 0 1.6em;
   border-bottom: 2px solid #D3D8D9;
 }
@@ -301,7 +300,7 @@ ul {
   font-weight: 500;
 }
 
-.comment {
+#comment {
   margin: 1.2em auto 1.6em;
   border-left: 2px solid #D3D8D9;
   padding-left: 0.6em;
@@ -328,7 +327,7 @@ ul {
   text-align: end;
 }
 
-.comment-btns {
+#comment-btns {
   margin-top: 0.6em;
 }
 

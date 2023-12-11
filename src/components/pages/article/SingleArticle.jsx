@@ -29,7 +29,7 @@ const SingleArticle = () => {
 
   return (
     <section>
-      <div className="single-article">
+      <div id="single-article">
         <p id="single-article-topic"><span id="single-article-topic-keyword">{singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}</span></p>
         <h2 id="single-article-title">{singleArticle.title}</h2>
         <p id="single-article-author">{singleArticle.author}</p>
@@ -39,7 +39,7 @@ const SingleArticle = () => {
           <p className="article-comment-count">{singleArticle.comment_count} comments</p>
           <p className="article-votes">{singleArticle.votes} {formatWord(singleArticle.votes)} { }</p>
         </div>
-        <div className="single-article-btns">
+        <div className="section-btns" id="single-article-btns">
           <Link to={`/news/articles/${singleArticle.article_id}`}>
             <button id="add-comment-btn">Add a comment</button>
           </Link>
