@@ -30,22 +30,22 @@ const SingleArticle = () => {
   return (
     <section>
       <div className="single-article">
-        <p className="article-topic">Posted in <span id="article-topic-keyword">{singleArticle.topic}</span></p>
-        <h2 className="single-article-title">{singleArticle.title}</h2>
-        <p className="single-article-author">{singleArticle.author}</p>
-        <p className="article-body">{singleArticle.body}</p>
-        <p className="single-article-time">{singleArticle.created_at.match(/\d{2}:\d{2}/)} on {lengthenDate(singleArticle.created_at.match(/\d{4}-\d{2}-\d{2}/)[0])}</p>
+        <p id="single-article-topic"><span id="single-article-topic-keyword">{singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}</span></p>
+        <h2 id="single-article-title">{singleArticle.title}</h2>
+        <p id="single-article-author">{singleArticle.author}</p>
+        <p id="single-article-body">{singleArticle.body}</p>
+        <p id="single-article-time">{singleArticle.created_at.match(/\d{2}:\d{2}/)} on {lengthenDate(singleArticle.created_at.match(/\d{4}-\d{2}-\d{2}/)[0])}</p>
         <div className="article-count-container">
           <p className="article-comment-count">{singleArticle.comment_count} comments</p>
           <p className="article-votes">{singleArticle.votes} {formatWord(singleArticle.votes)} { }</p>
         </div>
         <div className="article-btns">
           <Link to={`/news/articles/${singleArticle.article_id}`}>
-            <button>Add a comment</button>
+            <button id="add-comment-btn">Add a comment</button>
           </Link>
-          <div className="article-vote-btns">
-            <button>+</button>
-            <button>-</button>
+          <div>
+            <button className="article-vote-btn upvote-btn">+</button>
+            <button className="article-vote-btn downvote-btn">-</button>
           </div>
         </div>
         <Comments article_id={article_id} />
