@@ -1,8 +1,17 @@
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Login from './components/Login';
+import Nav from './components/Nav';
 
 function App() {
   return (
-    <h1>Northcoders News</h1>
+    <>
+      <Header />
+      <Nav />
+      <Login />
+      <Footer />
+    </>
   );
 }
 
