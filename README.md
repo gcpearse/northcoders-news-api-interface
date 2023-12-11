@@ -1,1 +1,1 @@
-# northcoders-news-api-interface
+# Northcoders News API Interface
