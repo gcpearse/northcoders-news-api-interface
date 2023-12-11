@@ -39,14 +39,14 @@ const SingleArticle = () => {
           <p className="article-votes">{singleArticle.votes} {formatWord(singleArticle.votes)} { }</p>
         </div>
         <div className="article-btns">
-        <Link to={`/news/articles/${singleArticle.article_id}`}>
-          <button>Add a comment</button>
-        </Link>
-        <div className="article-vote-btns">
-          <button>+</button>
-          <button>-</button>
+          <Link to={`/news/articles/${singleArticle.article_id}`}>
+            <button>Add a comment</button>
+          </Link>
+          <div className="article-vote-btns">
+            <button>+</button>
+            <button>-</button>
+          </div>
         </div>
-      </div>
       </div>
       <Link to="/news">
         <button className="nav-btn">Back to News</button>
