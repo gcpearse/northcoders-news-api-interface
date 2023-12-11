@@ -91,8 +91,10 @@ ul {
 }
 
 @media only screen and (min-width: 1280px) {
-
-  #search-bar,
+  #search-bar {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
   #articles-list {
     max-width: 1280px;
     margin: 0 auto;
@@ -103,30 +105,32 @@ ul {
   margin: 1em;
   border: 2px solid #D3D8D9;
   border-radius: 4px;
-  padding: 0.6em 0.8em;
+  padding: 1em 1.2em;
   background: #FDFFFC;
   height: auto;
   width: 400px;
 }
 
-.article-topic {
+#article-topic {
   text-align: start;
 }
 
 #article-topic-keyword {
-  font-size: 15px;
-  font-weight: 500;
+  border-radius: 10px;
+  padding: 0.2em 0.5em 0.3em;
+  background: #FEBF67;
+  font-size: 0.95rem;
 }
 
-.article-title {
-  margin: 0.4em auto;
+#article-title {
+  margin: 1.1em auto;
   font-weight: 500;
   font-size: 1rem;
   text-align: start;
 }
 
-.article-img {
-  margin: 0.8em auto;
+#article-img {
+  margin: 0 auto 1.1em;
   border-radius: 5px;
   object-fit: cover;
   height: 220px;
@@ -138,11 +142,15 @@ ul {
   text-align: start;
 }
 
+#article-author-keyword {
+  font-weight: 600;
+}
+
 .article-count-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.4em auto;
+  margin: 0.6em auto;
 }
 
 .article-btns,
