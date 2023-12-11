@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getArticleById } from "../../../utils/api-utils";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
 
@@ -47,6 +48,7 @@ const SingleArticle = () => {
             <button>-</button>
           </div>
         </div>
+        <Comments article_id={article_id} />
       </div>
       <Link to="/news">
         <button className="nav-btn">Back to News</button>
