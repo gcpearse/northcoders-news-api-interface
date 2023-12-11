@@ -11,4 +11,13 @@ const getArticles = async () => {
   }
 };
 
-export { getArticles };
+const getArticleById = async (article_id) => {
+  try {
+    const res = await api.get(`/articles/${article_id}`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getArticles, getArticleById };

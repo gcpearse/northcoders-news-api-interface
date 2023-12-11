@@ -55,6 +55,10 @@ nav {
   font-size: 0.9em;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 main {
   margin: 1em auto 0;
   padding-bottom: 7rem;
@@ -122,8 +126,9 @@ ul {
 .article-img {
   margin: 0.8em auto;
   border-radius: 5px;
-  height: 150px;
-  width: 150px;
+  object-fit: cover;
+  height: 220px;
+  width: 220px;
 }
 
 .article-author-time {
@@ -142,6 +147,60 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.article-body {
+  margin: 1.2em auto;
+  text-align: justify;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+.single-article {
+  margin: 1em auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 0.6em 0.8em;
+  background: #FDFFFC;
+  height: auto;
+  max-width: 85%;
+}
+
+.single-article-title {
+  margin: 0.4em auto;
+  font-weight: 500;
+  font-size: 1.15rem;
+  text-align: start;
+}
+
+.single-article-author {
+  margin-top: 0.4em;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+.single-article-time {
+  margin: 0 auto 1em;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+@media only screen and (min-width: 800px) {
+  .single-article {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+.nav-btn {
+  margin: 1.2em auto;
+  border: #E71D36;
+  border-radius: 6px;
+  padding: 0.4em 0.9em 0.5em;
+  background: #E71D36;
+  color: #FDFFFC;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 footer {
