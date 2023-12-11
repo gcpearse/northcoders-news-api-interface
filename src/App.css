@@ -300,9 +300,9 @@ ul {
   font-size: 0.95rem;
 }
 
-@media only screen and (min-width: 800px) {
-  .single-article {
-    max-width: 50%;
+@media only screen and (min-width: 1280px) {
+  #single-article {
+    max-width: 55%;
     margin: 0 auto;
   }
 }
@@ -326,7 +326,7 @@ ul {
 }
 
 #comment-time {
-  margin: 0.2em auto 0.4em;
+  margin: 0.8em auto;
   font-size: 0.9em;
 }
 
