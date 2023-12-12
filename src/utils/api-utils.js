@@ -39,12 +39,8 @@ const getUsers = async () => {
 };
 
 const patchArticleById = async (article_id, body) => {
-  try {
-    const res = await api.patch(`/articles/${article_id}`, body);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
+  const res = await api.patch(`/articles/${article_id}`, body);
+  return res.data;
 };
 
 export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById };

@@ -10,6 +10,7 @@ const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getArticleById((article_id))
@@ -25,21 +26,35 @@ const SingleArticle = () => {
   }, [article_id]);
 
   const handleUpvote = () => {
-    patchArticleById(singleArticle.article_id, {
-      "inc_votes": 1
-    });
     setSingleArticle((currentArticle) => {
       return { ...currentArticle, votes: currentArticle.votes + 1 };
     });
+    setError(null);
+    patchArticleById(singleArticle.article_id, {
+      "inc_votes": 1
+    })
+      .catch(() => {
+        setError("Oops! Something went wrong...");
+        setSingleArticle((currentArticle) => {
+          return { ...currentArticle, votes: currentArticle.votes - 1 };
+        });
+      });
   };
 
   const handleDownvote = () => {
-    patchArticleById(singleArticle.article_id, {
-      "inc_votes": -1
-    });
     setSingleArticle((currentArticle) => {
       return { ...currentArticle, votes: currentArticle.votes - 1 };
     });
+    setError(null);
+    patchArticleById(singleArticle.article_id, {
+      "inc_votes": -1
+    })
+      .catch(() => {
+        setError("Oops! Something went wrong...");
+        setSingleArticle((currentArticle) => {
+          return { ...currentArticle, votes: currentArticle.votes + 1 };
+        });
+      });;
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -64,6 +79,7 @@ const SingleArticle = () => {
             <button className="vote-btn downvote-btn" onClick={handleDownvote}>-</button>
           </div>
         </div>
+        {error ? <p className="vote-error">{error}</p> : null}
         <Comments article_id={article_id} />
       </div>
       <Link to="/news">
