@@ -58,9 +58,7 @@ const SingleArticle = () => {
           <p>{singleArticle.votes} {formatWord(singleArticle.votes)}</p>
         </div>
         <div className="section-btns" id="single-article-btns">
-          <Link to={`/news/articles/${singleArticle.article_id}`}>
-            <button className="grey-btn">Add a comment</button>
-          </Link>
+          <button className="grey-btn">Add a comment</button>
           <div>
             <button className="vote-btn upvote-btn" onClick={handleUpvote}>+</button>
             <button className="vote-btn downvote-btn" onClick={handleDownvote}>-</button>
