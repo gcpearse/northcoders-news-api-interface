@@ -15,15 +15,9 @@ const Article = ({ article }) => {
           <p>{article.votes} {formatWord(article.votes)}</p>
         </div>
       </li>
-      <div className="section-btns">
-        <Link to={`/news/articles/${article.article_id}`}>
-          <button className="grey-btn">View article</button>
-        </Link>
-        <div className="article-vote-btns">
-          <button className="vote-btn upvote-btn">+</button>
-          <button className="vote-btn downvote-btn">-</button>
-        </div>
-      </div>
+      <Link to={`/news/articles/${article.article_id}`}>
+        <button className="grey-btn">View article</button>
+      </Link>
     </div>
   );
 };
