@@ -11,7 +11,7 @@
   color: #011627;
 }
 
-/* Universal Elements */
+/* Header */
 
 header {
   display: flex;
@@ -28,6 +28,8 @@ h1 {
   font-weight: 500;
   text-shadow: 0 0 1px #011627;
 }
+
+/* Nav Bar */
 
 nav {
   display: flex;
@@ -50,6 +52,8 @@ nav {
   text-underline-offset: 3px;
 }
 
+/* Login Bar */
+
 #login-bar {
   display: flex;
   justify-content: end;
@@ -58,11 +62,49 @@ nav {
   border-bottom: 1px solid #D3D8D9;
   padding-right: 5%;
   background: #FDFFFC;
-  height: 2.4em;
+  height: 2.8em;
   font-size: 0.9em;
 }
 
-button:hover {
+#login-form {
+  display: flex;
+}
+
+.visible-element {
+  display: inherit;
+  visibility: inherit;
+}
+
+.invisible-element {
+  display: none;
+  visibility: hidden;
+}
+
+#user-selection {
+  border-radius: 4px;
+  height: 23.2px;
+  max-width: 124px;
+}
+
+#login-btn {
+  margin-left: 0.8em;
+  border: 1px ridge #011627;
+  border-radius: 6px;
+  background: #E6EAE9;
+  line-height: 1.2rem;
+}
+
+#login-btn:hover {
+  background: #CFD5D5;
+}
+
+#login-btn:active {
+  background: #B8BFC2;
+}
+
+button:hover,
+#user-selection:hover,
+#login-btn:hover {
   cursor: pointer;
 }
 
@@ -75,6 +117,8 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
+/* News Page */
 
 #search-bar {
   position: sticky;
@@ -89,8 +133,6 @@ ul {
   background: #FDFFFC;
   box-shadow: 0 0 2px 1px #D3D8D9;
 }
-
-/* News Page */
 
 #articles-list {
   display: flex;
@@ -124,24 +166,19 @@ ul {
   width: 400px;
 }
 
-#article-topic,
-#article-topic-keyword,
-#article-title,
-#article-author-info,
-#single-article-topic,
-#single-article-title,
-#single-article-author,
-#single-article-time,
-#comments-header,
-#comment-author,
-#comment-time {
+.article-topic,
+.article-title,
+.article-text,
+.author,
+.timestamp,
+#comments-header {
   text-align: start;
 }
 
-#article-title {
+.article-title {
   margin: 1.1em auto;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 #article-img {
@@ -152,7 +189,7 @@ ul {
   width: 300px;
 }
 
-#article-author-info {
+.article-text {
   font-size: 0.9rem;
 }
 
@@ -164,9 +201,6 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-#article-count-container {
   margin: 1em auto;
 }
 
@@ -176,22 +210,20 @@ ul {
   align-items: center;
 }
 
-#view-article-btn,
+.grey-btn,
 #delete-comment-btn {
   border: none;
   border-radius: 15px;
-  padding: 0.35em 0.7em 0.4em;
+  padding: 0.4em 0.9em 0.5em;
   background: #E6EAE9;
   font-size: 0.95rem;
 }
 
-#view-article-btn:hover,
-#add-comment-btn:hover {
+.grey-btn:hover {
   background: #CFD5D5;
 }
 
-#view-article-btn:active,
-#add-comment-btn:active {
+.grey-btn:active {
   background: #B8BFC2;
 }
 
@@ -230,7 +262,7 @@ ul {
   background: #F6B4BA;
 }
 
-/* Single Article Page */
+/* Single Article Page - Article */
 
 #single-article {
   margin: 1em auto;
@@ -247,47 +279,30 @@ ul {
   padding: 0.2em 0.6em 0.3em;
   background: #FECF8C;
   font-size: 0.95rem;
-}
-
-#single-article-title {
-  margin: 1.2em auto 0.7em;
   font-weight: 500;
-  font-size: 1.2rem;
 }
 
-#single-article-author {
+.author {
   margin-top: 0.4em;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-#single-article-body {
+.text-body {
   margin: 1.5em auto;
   text-align: justify;
   font-size: 0.9rem;
   line-height: 1.2rem;
 }
 
-#single-article-time {
+.timestamp {
   margin: 1em auto;
   font-size: 0.9rem;
-}
-
-#single-article-count-container {
-  margin: auto auto 0.6em;
 }
 
 #single-article-btns {
   padding: 0.6em 0 2em;
   border-bottom: 2px solid #D3D8D9;
-}
-
-#add-comment-btn {
-  border: none;
-  border-radius: 15px;
-  padding: 0.4em 0.9em 0.5em;
-  background: #E6EAE9;
-  font-size: 0.95rem;
 }
 
 @media only screen and (min-width: 1280px) {
@@ -296,6 +311,8 @@ ul {
     margin: 0 auto;
   }
 }
+
+/* Single Article Page - Comments */
 
 #comments-header {
   margin: 1.3em auto 0;
@@ -309,29 +326,13 @@ ul {
   padding-left: 0.6em;
 }
 
-#comment-author {
-  margin-bottom: 0.6em;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-#comment-time {
-  margin: 0.8em auto;
-  font-size: 0.9em;
-}
-
-#comment-body {
-  font-size: 0.9rem;
-  text-align: justify;
-}
-
 #comment-votes {
   margin-top: 0.4em;
   text-align: end;
 }
 
 #comment-btns {
-  margin-top: 0.6em;
+  margin-top: 1em;
 }
 
 .site-nav-btn {
@@ -344,6 +345,8 @@ ul {
   font-size: 1.1rem;
   font-weight: 500;
 }
+
+/* Footer and Scroll Up Button */
 
 footer {
   position: absolute;
