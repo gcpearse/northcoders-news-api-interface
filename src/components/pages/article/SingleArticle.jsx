@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getArticleById, patchArticleById } from "../../../utils/api-utils";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import Comments from "./Comments";
+import CommentViewer from "./CommentViewer";
 
 const SingleArticle = () => {
 
@@ -11,6 +12,7 @@ const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
+  const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
     getArticleById((article_id))
@@ -41,7 +43,7 @@ const SingleArticle = () => {
       });
   };
 
-  const handleDownvote = () => {
+  const handleDownVote = () => {
     setSingleArticle((currentArticle) => {
       return { ...currentArticle, votes: currentArticle.votes - 1 };
     });
@@ -73,14 +75,18 @@ const SingleArticle = () => {
           <p>{singleArticle.votes} {formatWord(singleArticle.votes)}</p>
         </div>
         <div className="section-btns" id="single-article-btns">
-          <button className="grey-btn">Add a comment</button>
+          <button className="grey-btn" onClick={() => {
+            setShowComments(!showComments);
+          }}>{showComments ? "Hide comments" : "Show comments"}</button>
           <div>
             <button className="vote-btn upvote-btn" onClick={handleUpvote}>+</button>
-            <button className="vote-btn downvote-btn" onClick={handleDownvote}>-</button>
+            <button className="vote-btn downvote-btn" onClick={handleDownVote}>-</button>
           </div>
         </div>
         {error ? <p className="vote-error">{error}</p> : null}
-        <Comments article_id={article_id} />
+        <CommentViewer showComments={showComments}>
+          <Comments article_id={article_id} />
+        </CommentViewer>
       </div>
       <Link to="/news">
         <button className="site-nav-btn">Back to News</button>
