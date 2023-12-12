@@ -300,9 +300,12 @@ ul {
   font-size: 0.9rem;
 }
 
-.vote-error {
+.error {
   color: #E71D36;
   font-size: 0.9rem;
+}
+
+#vote-error {
   text-align: end;
 }
 
