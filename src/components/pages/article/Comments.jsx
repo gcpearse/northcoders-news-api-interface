@@ -8,6 +8,7 @@ const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
   const { user } = useContext(UserContext);
+  const [newComment, setNewComment] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -22,7 +23,7 @@ const Comments = ({ article_id }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [article_id, comments]);
+  }, [newComment]);
 
   const handleChange = (event) => {
     setInput(event.target.value);
@@ -30,12 +31,15 @@ const Comments = ({ article_id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
     if (user && input) {
-      postComment(article_id, {
+      const body = {
         "username": user,
         "body": input
-      });
+      };
+      postComment(article_id, body)
+        .then(({ comment }) => {
+          setNewComment(comment);
+        });
     }
     setInput("");
   };
@@ -46,6 +50,8 @@ const Comments = ({ article_id }) => {
 
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
+
+  console.log(comments);
 
   return (
     <section>
