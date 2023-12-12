@@ -38,13 +38,9 @@ const Login = () => {
     }
   };
 
-  const setGreeting = (user) => {
-    if (user) return `Hello, ${user}!`;
-  };
-
   return (
     <section id="login-bar">
-      <p>{setGreeting(user)}</p>
+      {user ? <p>Hello, {user}!</p> : null}
       <form onSubmit={handleSubmit} id="login-form">
         <label htmlFor="user-selection">
           <select name="users" className={visibility} id="user-selection" onChange={handleChange}>
