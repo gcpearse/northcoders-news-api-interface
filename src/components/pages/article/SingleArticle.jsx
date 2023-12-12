@@ -25,7 +25,7 @@ const SingleArticle = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [article_id]);
+  }, []);
 
   const handleUpvote = () => {
     setSingleArticle((currentArticle) => {
