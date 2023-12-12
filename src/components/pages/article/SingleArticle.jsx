@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getArticleById } from "../../../utils/api-utils";
+import { getArticleById, patchArticleById } from "../../../utils/api-utils";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import Comments from "./Comments";
 
@@ -24,6 +24,24 @@ const SingleArticle = () => {
       });
   }, [article_id]);
 
+  const handleUpvote = () => {
+    patchArticleById(singleArticle.article_id, {
+      "inc_votes": 1
+    });
+    setSingleArticle((currentArticle) => {
+      return { ...currentArticle, votes: currentArticle.votes + 1 };
+    });
+  };
+
+  const handleDownvote = () => {
+    patchArticleById(singleArticle.article_id, {
+      "inc_votes": -1
+    });
+    setSingleArticle((currentArticle) => {
+      return { ...currentArticle, votes: currentArticle.votes - 1 };
+    });
+  };
+
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
 
@@ -44,8 +62,8 @@ const SingleArticle = () => {
             <button className="grey-btn">Add a comment</button>
           </Link>
           <div>
-            <button className="vote-btn upvote-btn">+</button>
-            <button className="vote-btn downvote-btn">-</button>
+            <button className="vote-btn upvote-btn" onClick={handleUpvote}>+</button>
+            <button className="vote-btn downvote-btn" onClick={handleDownvote}>-</button>
           </div>
         </div>
         <Comments article_id={article_id} />
