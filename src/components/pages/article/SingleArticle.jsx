@@ -83,7 +83,7 @@ const SingleArticle = () => {
             <button className="vote-btn downvote-btn" onClick={handleDownVote}>-</button>
           </div>
         </div>
-        {error ? <p className="vote-error">{error}</p> : null}
+        {error ? <p className="error" id="vote-error">{error}</p> : null}
         <CommentViewer showComments={showComments}>
           <Comments article_id={article_id} />
         </CommentViewer>

@@ -11,6 +11,7 @@ const Comments = ({ article_id }) => {
   const [newComment, setNewComment] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getCommentsByArticleId(article_id)
@@ -25,10 +26,6 @@ const Comments = ({ article_id }) => {
       });
   }, [newComment]);
 
-  const handleChange = (event) => {
-    setInput(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user && input) {
@@ -38,13 +35,17 @@ const Comments = ({ article_id }) => {
       };
       postComment(article_id, body)
         .then(({ comment }) => {
+          setError(null);
           setNewComment(comment);
+        })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
         });
+    } else {
+      if (!user && input) setError("You must be logged in to leave a comment.");
+      if (user && !input) setError("Input field may not be empty.");
+      if (!user && !input) setError("You must be logged in to leave a comment. Input field may not be empty.");
     }
-    setInput("");
-  };
-
-  const handleClear = () => {
     setInput("");
   };
 
@@ -63,11 +64,12 @@ const Comments = ({ article_id }) => {
             id="new-comment"
             placeholder={"Add a comment..."}
             value={input}
-            onChange={handleChange}></textarea>
+            onChange={(event) => setInput(event.target.value)}></textarea>
           <div className="section-btns">
             <button type="submit" className="grey-btn">Submit</button>
-            <button type="button" className="grey-btn" onClick={handleClear}>Clear</button>
+            <button type="button" className="grey-btn" onClick={() => setInput("")}>Clear</button>
           </div>
+          {error ? <p className="error">{error}</p> : null}
         </form>
       </div>
       <ul>
