@@ -13,6 +13,7 @@ const SingleArticle = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
+  const [newComment, setNewComment] = useState({});
 
   useEffect(() => {
     getArticleById((article_id))
@@ -25,7 +26,7 @@ const SingleArticle = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [newComment]);
 
   const handleUpvote = () => {
     setSingleArticle((currentArticle) => {
@@ -85,7 +86,7 @@ const SingleArticle = () => {
         </div>
         {error ? <p className="error" id="vote-error">{error}</p> : null}
         <CommentViewer showComments={showComments}>
-          <Comments article_id={article_id} />
+          <Comments article_id={article_id} newComment={newComment} setNewComment={setNewComment} />
         </CommentViewer>
       </div>
       <Link to="/news">

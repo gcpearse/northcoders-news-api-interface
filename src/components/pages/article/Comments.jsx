@@ -3,12 +3,11 @@ import Comment from "./Comment";
 import { getCommentsByArticleId, postComment } from "../../../utils/api-utils";
 import { UserContext } from "../../../contexts/UserContext";
 
-const Comments = ({ article_id }) => {
+const Comments = ({ article_id, newComment, setNewComment }) => {
 
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
   const { user } = useContext(UserContext);
-  const [newComment, setNewComment] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
@@ -51,8 +50,6 @@ const Comments = ({ article_id }) => {
 
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
-
-  console.log(comments);
 
   return (
     <section>
