@@ -54,4 +54,13 @@ const deleteComment = async (comment_id) => {
   return res.data;
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment, deleteComment };
+const getTopics = async () => {
+  try {
+    const res = await api.get("/topics");
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment, deleteComment, getTopics };
