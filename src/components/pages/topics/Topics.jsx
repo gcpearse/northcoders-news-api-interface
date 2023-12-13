@@ -3,9 +3,8 @@ import { useState } from "react";
 import { getTopics } from "../../../utils/api-utils";
 import Topic from "./Topic";
 
-const Topics = () => {
+const Topics = ({ topics, setTopics }) => {
 
-  const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
