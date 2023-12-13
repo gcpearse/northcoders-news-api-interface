@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Topic from "./Topic";
 
 const Topics = ({ topics, isLoading, isError }) => {
