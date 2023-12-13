@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getArticleById, patchArticleById } from "../../../utils/api-utils";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import Comments from "./Comments";
 import CommentViewer from "./CommentViewer";
+import { UserContext } from "../../../contexts/UserContext";
 
 const SingleArticle = () => {
 
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState({});
+  const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
+  const [newComment, setNewComment] = useState({});
 
   useEffect(() => {
     getArticleById((article_id))
@@ -25,38 +28,46 @@ const SingleArticle = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [article_id]);
+  }, [newComment]);
 
   const handleUpvote = () => {
-    setSingleArticle((currentArticle) => {
-      return { ...currentArticle, votes: currentArticle.votes + 1 };
-    });
-    setError(null);
-    patchArticleById(singleArticle.article_id, {
-      "inc_votes": 1
-    })
-      .catch(() => {
-        setError("Oops! Something went wrong...");
-        setSingleArticle((currentArticle) => {
-          return { ...currentArticle, votes: currentArticle.votes - 1 };
-        });
+    if (user) {
+      setSingleArticle((currentArticle) => {
+        return { ...currentArticle, votes: currentArticle.votes + 1 };
       });
+      setError(null);
+      patchArticleById(singleArticle.article_id, {
+        "inc_votes": 1
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setSingleArticle((currentArticle) => {
+            return { ...currentArticle, votes: currentArticle.votes - 1 };
+          });
+        });
+    } else {
+      setError("You must be logged in to vote.");
+    }
   };
 
   const handleDownVote = () => {
-    setSingleArticle((currentArticle) => {
-      return { ...currentArticle, votes: currentArticle.votes - 1 };
-    });
-    setError(null);
-    patchArticleById(singleArticle.article_id, {
-      "inc_votes": -1
-    })
-      .catch(() => {
-        setError("Oops! Something went wrong...");
-        setSingleArticle((currentArticle) => {
-          return { ...currentArticle, votes: currentArticle.votes + 1 };
-        });
-      });;
+    if (user) {
+      setSingleArticle((currentArticle) => {
+        return { ...currentArticle, votes: currentArticle.votes - 1 };
+      });
+      setError(null);
+      patchArticleById(singleArticle.article_id, {
+        "inc_votes": -1
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setSingleArticle((currentArticle) => {
+            return { ...currentArticle, votes: currentArticle.votes + 1 };
+          });
+        });;
+    } else {
+      setError("You must be logged in to vote.");
+    }
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -74,6 +85,7 @@ const SingleArticle = () => {
           <p>{singleArticle.comment_count} comments</p>
           <p>{singleArticle.votes} {formatWord(singleArticle.votes)}</p>
         </div>
+        {error ? <p className="error">{error}</p> : null}
         <div className="section-btns" id="single-article-btns">
           <button className="grey-btn" onClick={() => {
             setShowComments(!showComments);
@@ -83,9 +95,8 @@ const SingleArticle = () => {
             <button className="vote-btn downvote-btn" onClick={handleDownVote}>-</button>
           </div>
         </div>
-        {error ? <p className="vote-error">{error}</p> : null}
         <CommentViewer showComments={showComments}>
-          <Comments article_id={article_id} />
+          <Comments article_id={article_id} newComment={newComment} setNewComment={setNewComment} />
         </CommentViewer>
       </div>
       <Link to="/news">

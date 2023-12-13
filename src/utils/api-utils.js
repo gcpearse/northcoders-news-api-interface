@@ -43,4 +43,9 @@ const patchArticleById = async (article_id, body) => {
   return res.data;
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById };
+const postComment = async (article_id, body) => {
+  const res = await api.post(`/articles/${article_id}/comments`, body);
+  return res.data;
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment };

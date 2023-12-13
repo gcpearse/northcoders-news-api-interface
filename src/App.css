@@ -300,10 +300,9 @@ ul {
   font-size: 0.9rem;
 }
 
-.vote-error {
+.error {
   color: #E71D36;
   font-size: 0.9rem;
-  text-align: end;
 }
 
 #single-article-btns {
@@ -323,8 +322,22 @@ ul {
   margin: 1em auto 0;
   border-top: 2px solid #D3D8D9;
   padding-top: 1em;
-  padding-left: 0.5em;
   font-weight: 500;
+}
+
+#new-comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+textarea {
+  resize: none;
+  margin: 1.4em 0;
+  border-radius: 2px;
+  line-height: 1.2rem;
+  width: 99%;
+  height: auto;
 }
 
 #comment {
