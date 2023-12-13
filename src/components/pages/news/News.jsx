@@ -116,7 +116,9 @@ const News = ({ topics }) => {
           </label>
         </form>
         <div id="order-btns">
-          <span className="search-label" id="order-label">Sort order</span>
+          <span className="search-label" id="order-label">
+            Sort order
+          </span>
           <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled={buttonToggle}>
             Ascending
           </button>
