@@ -2,9 +2,13 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://northcoders-news-api-twr1.onrender.com/api" });
 
-const getArticles = async () => {
+const getArticles = async (query) => {
   try {
-    const res = await api.get("/articles");
+    const res = await api.get("/articles", {
+      params: {
+        topic: query
+      }
+    });
     return res.data;
   } catch (err) {
     console.log(err);
@@ -50,7 +54,7 @@ const postComment = async (article_id, body) => {
 
 const deleteComment = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
-  console.log(res.data)
+  console.log(res.data);
   return res.data;
 };
 
@@ -61,6 +65,6 @@ const getTopics = async () => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment, deleteComment, getTopics };
