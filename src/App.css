@@ -211,7 +211,7 @@ ul {
 }
 
 .grey-btn,
-#delete-comment-btn {
+.delete-comment-btn {
   border: none;
   border-radius: 15px;
   padding: 0.4em 0.9em 0.5em;
@@ -249,7 +249,7 @@ ul {
 }
 
 .downvote-btn:hover,
-#delete-comment-btn:hover {
+.delete-comment-btn:hover {
   background: #F9D9DB;
 }
 
@@ -258,7 +258,7 @@ ul {
 }
 
 .downvote-btn:active,
-#delete-comment-btn:active {
+.delete-comment-btn:active {
   background: #F6B4BA;
 }
 
@@ -353,6 +353,10 @@ textarea {
 
 #comment-btns {
   margin-top: 1em;
+}
+
+.delete-comment-btn:disabled {
+  visibility: hidden;
 }
 
 .site-nav-btn {

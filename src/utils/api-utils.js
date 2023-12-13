@@ -48,4 +48,10 @@ const postComment = async (article_id, body) => {
   return res.data;
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment };
+const deleteComment = async (comment_id) => {
+  const res = await api.delete(`/comments/${comment_id}`);
+  console.log(res.data)
+  return res.data;
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId, getUsers, patchArticleById, postComment, deleteComment };
