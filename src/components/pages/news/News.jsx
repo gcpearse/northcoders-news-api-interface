@@ -3,13 +3,14 @@ import { getArticles } from "../../../utils/api-utils";
 import Article from "./Article";
 import { useSearchParams } from "react-router-dom";
 
-const News = () => {
+const News = ({ topics }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const topicQuery = searchParams.get("topic");
   const sortByQuery = searchParams.get("sort_by");
   const orderQuery = searchParams.get("order");
 
+  const [topic, setTopic] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,13 +41,28 @@ const News = () => {
     setSearchParams(newParams);
   };
 
-  const handleChange = (event) => {
+  const setTopicQuery = (topic) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("topic", topic);
+    setSearchParams(newParams);
+  };
+
+  const handleSortByChange = (event) => {
     setSortBy(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSortBySubmit = (event) => {
     event.preventDefault();
     if (sortBy) setSortByQuery(sortBy);
+  };
+
+  const handleTopicChange = (event) => {
+    setTopic(event.target.value);
+  };
+
+  const handleTopicSubmit = (event) => {
+    event.preventDefault();
+    if (topic) setTopicQuery(topic);
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -55,16 +71,32 @@ const News = () => {
   return (
     <section>
       <div id="search-bar">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSortBySubmit}>
           <label htmlFor="sort-by-dropdown">
             <span>Sort articles</span>
-            <select name="sort-by" id="sort-by-dropdown" onChange={handleChange}>
+            <select name="sort-by" id="sort-by-dropdown" onChange={handleSortByChange}>
               <option value="">Select preference</option>
               <option value="author">Author</option>
               <option value="comment_count">Comment count</option>
               <option value="created_at">Date created</option>
               <option value="title">Title</option>
               <option value="votes">Votes</option>
+            </select>
+            <input type="submit" value="Go" />
+          </label>
+        </form>
+        <form onSubmit={handleTopicSubmit}>
+          <label htmlFor="topic-dropdown">
+            <span>Filter articles</span>
+            <select name="topic" id="topic-dropdown" onChange={handleTopicChange}>
+              <option value="">Select topic</option>
+              {topics.sort((a, b) => {
+                if (a.slug > b.slug) return 1;
+                if (a.slug < b.slug) return -1;
+                return 0;
+              }).map((topic) => {
+                return <option key={topic.slug} value={topic.slug}>{topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}</option>;
+              })}
             </select>
             <input type="submit" value="Go" />
           </label>
