@@ -16,6 +16,7 @@ const News = ({ topics }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [buttonToggle, setButtonToggle] = useState(false);
 
   useEffect(() => {
     getArticles(topicQuery, sortByQuery, orderQuery)
@@ -43,6 +44,7 @@ const News = ({ topics }) => {
   };
 
   const setOrderQuery = (order) => {
+    setButtonToggle(!buttonToggle);
     const newParams = new URLSearchParams(searchParams);
     newParams.set("order", order);
     setSearchParams(newParams);
@@ -115,10 +117,10 @@ const News = ({ topics }) => {
         </form>
         <div id="order-btns">
           <span className="search-label" id="order-label">Sort order</span>
-          <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")}>
+          <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled={buttonToggle}>
             Ascending
           </button>
-          <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")}>
+          <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")} disabled={!buttonToggle}>
             Descending
           </button>
         </div>
