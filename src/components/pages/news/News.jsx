@@ -12,6 +12,7 @@ const News = ({ topics }) => {
 
   const [topic, setTopic] = useState("");
   const [sortBy, setSortBy] = useState("");
+
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -62,7 +63,7 @@ const News = ({ topics }) => {
 
   const handleTopicSubmit = (event) => {
     event.preventDefault();
-    if (topic) setTopicQuery(topic);
+    setTopicQuery(topic);
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -74,8 +75,7 @@ const News = ({ topics }) => {
         <form onSubmit={handleSortBySubmit}>
           <label htmlFor="sort-by-dropdown">
             <span>Sort articles</span>
-            <select name="sort-by" id="sort-by-dropdown" onChange={handleSortByChange}>
-              <option value="">Select preference</option>
+            <select name="sort-by" id="sort-by-dropdown" defaultValue={sortByQuery || "created_at"} onChange={handleSortByChange}>
               <option value="author">Author</option>
               <option value="comment_count">Comment count</option>
               <option value="created_at">Date created</option>
@@ -88,8 +88,8 @@ const News = ({ topics }) => {
         <form onSubmit={handleTopicSubmit}>
           <label htmlFor="topic-dropdown">
             <span>Filter articles</span>
-            <select name="topic" id="topic-dropdown" onChange={handleTopicChange}>
-              <option value="">Select topic</option>
+            <select name="topic" id="topic-dropdown" defaultValue={topicQuery} onChange={handleTopicChange}>
+              <option value="">All topics</option>
               {topics.sort((a, b) => {
                 if (a.slug > b.slug) return 1;
                 if (a.slug < b.slug) return -1;
