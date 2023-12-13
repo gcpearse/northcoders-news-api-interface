@@ -376,6 +376,11 @@ textarea {
   margin-top: 1.6em;
 }
 
+.topic-link {
+  text-decoration: none;
+  color: #011627;
+}
+
 .topic {
   margin: 1.8em auto;
   border-radius: 15px;
