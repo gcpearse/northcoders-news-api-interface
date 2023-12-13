@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import { UserContext } from "../../../contexts/UserContext";
 import { deleteComment } from "../../../utils/api-utils";
