@@ -75,11 +75,10 @@ const News = ({ topics }) => {
     <section>
       <div id="search-bar">
         <form id="sort-by-form" onSubmit={handleSortBySubmit}>
-          <label className="search-label" id="sort-by-label" htmlFor="sort-by-dropdown">
+          <label id="sort-by-label" htmlFor="sort-by-dropdown">
             Sort by
             <select
               name="sort-by"
-              className="search-dropdown"
               id="sort-by-dropdown"
               defaultValue={sortByQuery || "created_at"}
               onChange={handleSortByChange}>
@@ -89,15 +88,14 @@ const News = ({ topics }) => {
               <option value="title">Title</option>
               <option value="votes">Votes</option>
             </select>
-            <input type="submit" value="Go" className="select-btn search-btn" />
+            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
           </label>
         </form>
-        <form id="topic-form" onSubmit={handleTopicSubmit}>
-          <label className="search-label" id="topic-label" htmlFor="topic-dropdown">
+        <form onSubmit={handleTopicSubmit}>
+          <label id="topic-label" htmlFor="topic-dropdown">
             Search
             <select
               name="topic"
-              className="search-dropdown"
               id="topic-dropdown"
               defaultValue={topicQuery}
               onChange={handleTopicChange}>
@@ -112,11 +110,11 @@ const News = ({ topics }) => {
                 </option>;
               })}
             </select>
-            <input type="submit" value="Go" className="select-btn search-btn" />
+            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
           </label>
         </form>
         <div id="order-btns">
-          <span className="search-label" id="order-label">
+          <span>
             Sort order
           </span>
           <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled={buttonToggle}>

@@ -94,11 +94,15 @@ nav {
   line-height: 1.2rem;
 }
 
-#login-btn:hover {
+#login-btn:hover,
+.search-btn:hover,
+.order-btn:hover {
   background: #CFD5D5;
 }
 
-#login-btn:active {
+#login-btn:active,
+.search-btn:active,
+.order-btn:active {
   background: #B8BFC2;
 }
 
@@ -118,7 +122,7 @@ ul {
   list-style-type: none;
 }
 
-/* News Page */
+/* News Page - Search Bar */
 
 #search-bar {
   margin: 0.8em auto;
@@ -151,25 +155,43 @@ ul {
 
 #sort-by-dropdown,
 #topic-dropdown {
-  grid-column: 2 / 6;
-  padding: 0.15em 0;
+  grid-column: 2 / 7;
+  padding: 0.3em 0;
   width: auto;
   font-size: 0.85rem;
 }
 
 .search-btn {
   grid-column: 7;
+  margin-left: 25%;
+  border: 1px solid #D3D8D9;
+  border-radius: 6px;
+  background: #E6EAE9;
+  line-height: 1.5rem;
+}
+
+#order-btns {
+  margin-top: 1em;
+}
+
+.order-btn {
+  border: none;
+  border-radius: 20px;
+  background: #E6EAE9;
+  line-height: 1.8rem;
 }
 
 #asc-btn {
   grid-column: 2 / 5;
-  margin-right: 0.3em;
+  margin-right: 0.6em;
 }
 
 #desc-btn {
   grid-column: 5 / 8;
-  margin-left: 0.3em;
+  margin-left: 0.6em;
 }
+
+/* News Page - Articles */
 
 #articles-list {
   display: flex;
