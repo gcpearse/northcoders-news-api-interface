@@ -115,16 +115,20 @@ const News = ({ topics }) => {
           <span>
             Sort order
           </span>
-          {!orderQuery || orderQuery === "desc" ? <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")}>
+          <button
+            className="order-btn"
+            id="asc-btn"
+            onClick={() => setOrderQuery("asc")}
+            disabled={orderQuery === "asc"}>
             Ascending
-          </button> : <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled>
-            Ascending
-          </button>}
-          {orderQuery === "asc" ? <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")}>
+          </button>
+          <button
+            className="order-btn"
+            id="desc-btn"
+            onClick={() => setOrderQuery("desc")}
+            disabled={!orderQuery || orderQuery === "desc"}>
             Descending
-          </button> : <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")} disabled>
-            Descending
-          </button>}
+          </button>
         </div>
       </div>
       <ul id="articles-list">
