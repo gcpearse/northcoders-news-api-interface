@@ -19,7 +19,6 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
       deleteComment(comment.comment_id)
         .then(() => {
           setToggle(!toggle);
-          console.log(toggle);
         })
         .catch(() => {
           setComments((currentComments) => {
