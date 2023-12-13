@@ -74,7 +74,7 @@ const News = ({ topics }) => {
       <div id="search-bar">
         <form onSubmit={handleTopicSubmit}>
           <label id="topic-label" htmlFor="topic-dropdown">
-            Select topic
+            Search
             <select
               name="topic"
               id="topic-dropdown"
@@ -113,7 +113,7 @@ const News = ({ topics }) => {
         </form>
         <div id="order-btns">
           <span>
-            Sort order
+            Order
           </span>
           <button
             className="order-btn"
