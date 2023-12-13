@@ -6,6 +6,7 @@ const Login = () => {
 
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
+
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
   const [loginBtn, setLoginBtn] = useState("Log in");
@@ -43,14 +44,22 @@ const Login = () => {
       {user ? <p>Hello, {user}!</p> : null}
       <form onSubmit={handleSubmit} id="login-form">
         <label htmlFor="user-selection">
-          <select name="users" className={visibility} id="user-selection" onChange={handleChange}>
+          <select
+            name="users"
+            className={visibility}
+            id="user-selection"
+            onChange={handleChange}>
             <option value="">Select username</option>
             {users.map((user) => {
               return <option key={user.username} value={user.username}>{user.username}</option>;
             })}
           </select>
         </label>
-        <input type="submit" value={loginBtn} className="select-btn" id="login-btn" />
+        <input
+          type="submit"
+          value={loginBtn}
+          className="select-btn"
+          id="login-btn" />
       </form>
     </section>
   );

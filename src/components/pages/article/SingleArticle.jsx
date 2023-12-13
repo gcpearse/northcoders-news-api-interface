@@ -8,14 +8,19 @@ import { UserContext } from "../../../contexts/UserContext";
 
 const SingleArticle = () => {
 
+  const timeRegex = /\d{2}:\d{2}/;
+  const yearRegex = /\d{4}-\d{2}-\d{2}/;
+
   const { article_id } = useParams();
-  const [singleArticle, setSingleArticle] = useState({});
+
   const { user } = useContext(UserContext);
+
+  const [singleArticle, setSingleArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     getArticleById((article_id))
@@ -76,9 +81,15 @@ const SingleArticle = () => {
   return (
     <section>
       <div id="single-article">
-        <p className="article-topic"><span className="topic-keyword">{singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}</span></p>
+        <p className="article-topic">
+          <span className="topic-keyword">
+            {singleArticle.topic[0].toUpperCase() + singleArticle.topic.slice(1).toLowerCase()}
+          </span>
+        </p>
         <h2 className="article-title">{singleArticle.title}</h2>
-        <p className="timestamp">{singleArticle.created_at.match(/\d{2}:\d{2}/)} on {lengthenDate(singleArticle.created_at.match(/\d{4}-\d{2}-\d{2}/)[0])}</p>
+        <p className="timestamp">
+          {singleArticle.created_at.match(timeRegex)} on {lengthenDate(singleArticle.created_at.match(yearRegex)[0])}
+        </p>
         <p className="author">{singleArticle.author}</p>
         <p className="text-body">{singleArticle.body}</p>
         <div className="count-container">

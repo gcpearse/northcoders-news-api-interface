@@ -6,8 +6,8 @@ import { useSearchParams } from "react-router-dom";
 const News = ({ topics }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const topicQuery = searchParams.get("topic");
   const sortByQuery = searchParams.get("sort_by");
+  const topicQuery = searchParams.get("topic");
   const orderQuery = searchParams.get("order");
 
   const [topic, setTopic] = useState("");
@@ -28,7 +28,7 @@ const News = ({ topics }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [topicQuery, sortByQuery, orderQuery]);
+  }, [sortByQuery, topicQuery, orderQuery]);
 
   const setSortByQuery = (sortBy) => {
     const newParams = new URLSearchParams(searchParams);
@@ -36,15 +36,15 @@ const News = ({ topics }) => {
     setSearchParams(newParams);
   };
 
-  const setOrderQuery = (order) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("order", order);
-    setSearchParams(newParams);
-  };
-
   const setTopicQuery = (topic) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("topic", topic);
+    setSearchParams(newParams);
+  };
+
+  const setOrderQuery = (order) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("order", order);
     setSearchParams(newParams);
   };
 
@@ -75,7 +75,11 @@ const News = ({ topics }) => {
         <form onSubmit={handleSortBySubmit}>
           <label htmlFor="sort-by-dropdown">
             <span>Sort articles</span>
-            <select name="sort-by" id="sort-by-dropdown" defaultValue={sortByQuery || "created_at"} onChange={handleSortByChange}>
+            <select
+              name="sort-by"
+              id="sort-by-dropdown"
+              defaultValue={sortByQuery || "created_at"}
+              onChange={handleSortByChange}>
               <option value="author">Author</option>
               <option value="comment_count">Comment count</option>
               <option value="created_at">Date created</option>
@@ -88,14 +92,20 @@ const News = ({ topics }) => {
         <form onSubmit={handleTopicSubmit}>
           <label htmlFor="topic-dropdown">
             <span>Filter articles</span>
-            <select name="topic" id="topic-dropdown" defaultValue={topicQuery} onChange={handleTopicChange}>
+            <select
+              name="topic"
+              id="topic-dropdown"
+              defaultValue={topicQuery}
+              onChange={handleTopicChange}>
               <option value="">All topics</option>
               {topics.sort((a, b) => {
                 if (a.slug > b.slug) return 1;
                 if (a.slug < b.slug) return -1;
                 return 0;
               }).map((topic) => {
-                return <option key={topic.slug} value={topic.slug}>{topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}</option>;
+                return <option key={topic.slug} value={topic.slug}>
+                  {topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}
+                </option>;
               })}
             </select>
             <input type="submit" value="Go" />
@@ -103,8 +113,12 @@ const News = ({ topics }) => {
         </form>
         <div>
           <span>Sort order</span>
-          <button className="order-btn" onClick={() => setOrderQuery("asc")}>Ascending</button>
-          <button className="order-btn" onClick={() => setOrderQuery("desc")}>Descending</button>
+          <button className="order-btn" onClick={() => setOrderQuery("asc")}>
+            Ascending
+          </button>
+          <button className="order-btn" onClick={() => setOrderQuery("desc")}>
+            Descending
+          </button>
         </div>
       </div>
       <ul id="articles-list">
