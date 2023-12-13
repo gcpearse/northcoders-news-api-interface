@@ -124,7 +124,7 @@ ul {
   margin: 0.8em auto;
   border: 2px solid #E71D36;
   border-radius: 4px;
-  padding: 0.6em 0.7em;
+  padding: 0.2em 0.7em;
   background: #FDFFFC;
   box-shadow: 0 0 2px 1px #D3D8D9;
   max-width: 380px;
@@ -133,7 +133,7 @@ ul {
 
 @media (max-width: 400px) {
   #search-bar {
-    max-width: 84vw;
+    max-width: 85vw;
     margin: 0 auto;
   }
 }
@@ -144,12 +144,17 @@ ul {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
+  align-items: center;
+  margin: 0.5em auto;
+  font-size: 0.95em;
 }
 
 #sort-by-dropdown,
 #topic-dropdown {
   grid-column: 2 / 6;
+  padding: 0.15em 0;
   width: auto;
+  font-size: 0.85rem;
 }
 
 .search-btn {
@@ -157,11 +162,13 @@ ul {
 }
 
 #asc-btn {
-  grid-column: 4;
+  grid-column: 2 / 5;
+  margin-right: 0.3em;
 }
 
 #desc-btn {
-  grid-column: 5;
+  grid-column: 5 / 8;
+  margin-left: 0.3em;
 }
 
 #articles-list {
