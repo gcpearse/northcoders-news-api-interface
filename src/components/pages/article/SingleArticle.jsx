@@ -16,6 +16,7 @@ const SingleArticle = () => {
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [newComment, setNewComment] = useState({});
+  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
     getArticleById((article_id))
@@ -28,7 +29,7 @@ const SingleArticle = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [newComment]);
+  }, [newComment, toggle]);
 
   const handleUpvote = () => {
     if (user) {
@@ -96,7 +97,7 @@ const SingleArticle = () => {
           </div>
         </div>
         <CommentViewer showComments={showComments}>
-          <Comments article_id={article_id} newComment={newComment} setNewComment={setNewComment} />
+          <Comments article_id={article_id} newComment={newComment} setNewComment={setNewComment} toggle={toggle} setToggle={setToggle} />
         </CommentViewer>
       </div>
       <Link to="/news">

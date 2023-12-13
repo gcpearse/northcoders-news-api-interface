@@ -3,7 +3,7 @@ import Comment from "./Comment";
 import { getCommentsByArticleId, postComment } from "../../../utils/api-utils";
 import { UserContext } from "../../../contexts/UserContext";
 
-const Comments = ({ article_id, newComment, setNewComment }) => {
+const Comments = ({ article_id, newComment, setNewComment, toggle, setToggle }) => {
 
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
@@ -23,7 +23,7 @@ const Comments = ({ article_id, newComment, setNewComment }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [newComment]);
+  }, [newComment, toggle]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,7 +71,7 @@ const Comments = ({ article_id, newComment, setNewComment }) => {
       </div>
       <ul>
         {comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment} />;
+          return <Comment key={comment.comment_id} comment={comment} toggle={toggle} setToggle={setToggle} />;
         })}
       </ul>
     </section>
