@@ -71,7 +71,7 @@ const Comments = ({ article_id, toggle, setToggle }) => {
       </div>
       <ul>
         {comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment} toggle={toggle} setToggle={setToggle} />;
+          return <Comment key={comment.comment_id} comment={comment} toggle={toggle} setToggle={setToggle} setComments={setComments} />;
         })}
       </ul>
     </section>

@@ -3,21 +3,31 @@ import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import { UserContext } from "../../../contexts/UserContext";
 import { deleteComment } from "../../../utils/api-utils";
 
-const Comment = ({ comment, toggle, setToggle }) => {
+const Comment = ({ comment, toggle, setToggle, setComments }) => {
 
   const { user } = useContext(UserContext);
-  const [error, setError] = useState(null);
 
   const handleDelete = () => {
+    let index = 0;
     if (user === comment.author) {
-      setError(null)
+      setComments((currentComments) => {
+        index = currentComments.indexOf(comment);
+        return [...currentComments].filter((currentComment) => {
+          return currentComment.comment_id !== comment.comment_id;
+        });
+      });
       deleteComment(comment.comment_id)
         .then(() => {
           setToggle(!toggle);
           console.log(toggle);
         })
         .catch(() => {
-          setError("Oops! Something went wrong...")
+          setComments((currentComments) => {
+            const copy = [...currentComments];
+            copy.splice(index, 0, comment);
+            copy[index].error = "Oops! something went wrong";
+            return copy;
+          });
         });
     }
   };
@@ -35,7 +45,7 @@ const Comment = ({ comment, toggle, setToggle }) => {
           <button className="vote-btn downvote-btn">-</button>
         </div>
       </div>
-      {error ? <p className="error">{error}</p> : null}
+      <p className="error">{comment.error}</p>
     </div>
   );
 };
