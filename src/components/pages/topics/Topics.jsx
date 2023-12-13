@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Topic from "./Topic";
 
 const Topics = ({ topics, isLoading, isError }) => {
@@ -8,7 +7,7 @@ const Topics = ({ topics, isLoading, isError }) => {
 
   return (
     <section>
-      <p id="topics-intro">Click on any topic to view associated articles</p>
+      <p id="topics-intro">Click on any topic to view associated articles.</p>
       <ul>
         {topics.sort((a, b) => {
           if (a.slug > b.slug) return 1;

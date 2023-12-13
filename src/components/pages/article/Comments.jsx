@@ -5,9 +5,10 @@ import { UserContext } from "../../../contexts/UserContext";
 
 const Comments = ({ article_id, toggle, setToggle }) => {
 
+  const { user } = useContext(UserContext);
+
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
-  const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);

@@ -94,17 +94,21 @@ nav {
   line-height: 1.2rem;
 }
 
-#login-btn:hover {
+#login-btn:hover,
+.search-btn:hover,
+.order-btn:hover {
   background: #CFD5D5;
 }
 
-#login-btn:active {
+#login-btn:active,
+.search-btn:active,
+.order-btn:active {
   background: #B8BFC2;
 }
 
 button:hover,
-#user-selection:hover,
-#login-btn:hover {
+select:hover,
+.select-btn:hover {
   cursor: pointer;
 }
 
@@ -118,21 +122,76 @@ ul {
   list-style-type: none;
 }
 
-/* News Page */
+/* News Page - Search Bar */
 
 #search-bar {
-  position: sticky;
-  top: 2%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.8em 0.8em 0;
-  border: 3px solid #E71D36;
-  border-radius: 15px;
-  padding: 0.6em 3%;
+  margin: 0.8em auto;
+  border: 2px solid #E71D36;
+  border-radius: 4px;
+  padding: 0.2em 0.7em;
   background: #FDFFFC;
   box-shadow: 0 0 2px 1px #D3D8D9;
+  max-width: 380px;
+  text-align: left;
 }
+
+@media (max-width: 400px) {
+  #search-bar {
+    max-width: 85vw;
+    margin: 0 auto;
+  }
+}
+
+#sort-by-label,
+#topic-label,
+#order-btns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  margin: 0.5em auto;
+  font-size: 0.95em;
+}
+
+#sort-by-dropdown,
+#topic-dropdown {
+  grid-column: 2 / 7;
+  padding: 0.3em 0;
+  width: auto;
+  font-size: 0.85rem;
+}
+
+.search-btn {
+  grid-column: 7;
+  margin-left: 25%;
+  border: 1px solid #D3D8D9;
+  border-radius: 6px;
+  background: #E6EAE9;
+  line-height: 1.5rem;
+}
+
+#order-btns {
+  margin-top: 1em;
+}
+
+.order-btn {
+  border: none;
+  border-radius: 20px;
+  background: #E6EAE9;
+  line-height: 1.8rem;
+}
+
+#asc-btn {
+  grid-column: 2 / 5;
+  margin-right: 0.6em;
+}
+
+#desc-btn {
+  grid-column: 5 / 8;
+  margin-left: 0.6em;
+}
+
+/* News Page - Articles */
 
 #articles-list {
   display: flex;
@@ -142,11 +201,6 @@ ul {
 }
 
 @media only screen and (min-width: 1280px) {
-  #search-bar {
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-
   #articles-list {
     max-width: 1280px;
     margin: 0 auto;
@@ -383,20 +437,22 @@ textarea {
 
 .topic {
   margin: 1.8em auto;
-  border-radius: 15px;
+  border: 2px solid #FECF8C;
+  border-radius: 12px;
   padding: 1em;
-  background: #FECF8C;
+  background: #FDFFFC;
   width: 360px;
   max-width: 80%;
 }
 
 .topic:hover {
   cursor: pointer;
-  background: #FEBF67;
+  background: #FECF8C;
 }
 
 .topic:active {
-  background: #FFAF41;
+  background: #FEBF67;
+  border: 2px solid #FEBF67;
 }
 
 #topic-header {
