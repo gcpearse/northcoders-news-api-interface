@@ -370,6 +370,39 @@ textarea {
   font-weight: 500;
 }
 
+/* Topics Page */
+
+#topics-intro {
+  margin-top: 1.6em;
+}
+
+.topic {
+  margin: 1.8em auto;
+  border-radius: 15px;
+  padding: 1em;
+  background: #FECF8C;
+  width: 360px;
+  max-width: 80%;
+}
+
+.topic:hover {
+  cursor: pointer;
+  background: #FEBF67;
+}
+
+.topic:active {
+  background: #FFAF41;
+}
+
+#topic-header {
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+#topic-body {
+  font-size: 0.85em;
+}
+
 /* Footer and Scroll Up Button */
 
 footer {
