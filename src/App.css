@@ -125,7 +125,7 @@ ul {
 /* News Page - Search Bar */
 
 #search-bar {
-  margin: 0.8em auto;
+  margin: 0 auto;
   border: 2px solid #E71D36;
   border-radius: 4px;
   padding: 0.2em 0.7em;
