@@ -16,7 +16,6 @@ const News = ({ topics }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [buttonToggle, setButtonToggle] = useState(false);
 
   useEffect(() => {
     getArticles(topicQuery, sortByQuery, orderQuery)
@@ -44,7 +43,6 @@ const News = ({ topics }) => {
   };
 
   const setOrderQuery = (order) => {
-    setButtonToggle(!buttonToggle);
     const newParams = new URLSearchParams(searchParams);
     newParams.set("order", order);
     setSearchParams(newParams);
@@ -74,26 +72,9 @@ const News = ({ topics }) => {
   return (
     <section>
       <div id="search-bar">
-        <form id="sort-by-form" onSubmit={handleSortBySubmit}>
-          <label id="sort-by-label" htmlFor="sort-by-dropdown">
-            Sort by
-            <select
-              name="sort-by"
-              id="sort-by-dropdown"
-              defaultValue={sortByQuery || "created_at"}
-              onChange={handleSortByChange}>
-              <option value="author">Author</option>
-              <option value="comment_count">Comment count</option>
-              <option value="created_at">Date created</option>
-              <option value="title">Title</option>
-              <option value="votes">Votes</option>
-            </select>
-            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
-          </label>
-        </form>
         <form onSubmit={handleTopicSubmit}>
           <label id="topic-label" htmlFor="topic-dropdown">
-            Search
+            Select topic
             <select
               name="topic"
               id="topic-dropdown"
@@ -113,16 +94,37 @@ const News = ({ topics }) => {
             <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
           </label>
         </form>
+        <form id="sort-by-form" onSubmit={handleSortBySubmit}>
+          <label id="sort-by-label" htmlFor="sort-by-dropdown">
+            Sort by
+            <select
+              name="sort-by"
+              id="sort-by-dropdown"
+              defaultValue={sortByQuery || "created_at"}
+              onChange={handleSortByChange}>
+              <option value="author">Author</option>
+              <option value="comment_count">Comment count</option>
+              <option value="created_at">Date created</option>
+              <option value="title">Title</option>
+              <option value="votes">Votes</option>
+            </select>
+            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
+          </label>
+        </form>
         <div id="order-btns">
           <span>
             Sort order
           </span>
-          <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled={buttonToggle}>
+          {!orderQuery || orderQuery === "desc" ? <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")}>
             Ascending
-          </button>
-          <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")} disabled={!buttonToggle}>
+          </button> : <button className="order-btn" id="asc-btn" onClick={() => setOrderQuery("asc")} disabled>
+            Ascending
+          </button>}
+          {orderQuery === "asc" ? <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")}>
             Descending
-          </button>
+          </button> : <button className="order-btn" id="desc-btn" onClick={() => setOrderQuery("desc")} disabled>
+            Descending
+          </button>}
         </div>
       </div>
       <ul id="articles-list">
