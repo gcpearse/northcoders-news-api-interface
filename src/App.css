@@ -191,6 +191,12 @@ ul {
   margin-left: 0.6em;
 }
 
+.order-btn:disabled:hover,
+.order-btn:disabled:active {
+  cursor:auto;
+  background: #E6EAE9;
+}
+
 /* News Page - Articles */
 
 #articles-list {
