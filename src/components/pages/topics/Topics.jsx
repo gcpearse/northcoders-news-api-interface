@@ -1,25 +1,7 @@
-import { useEffect } from "react";
 import { useState } from "react";
-import { getTopics } from "../../../utils/api-utils";
 import Topic from "./Topic";
 
-const Topics = ({ topics, setTopics }) => {
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    getTopics()
-      .then(({ topics }) => {
-        setTopics(topics);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-        setIsError(true);
-      });
-  }, []);
+const Topics = ({ topics, isLoading, isError }) => {
 
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
