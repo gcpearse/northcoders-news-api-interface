@@ -2,11 +2,12 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://northcoders-news-api-twr1.onrender.com/api" });
 
-const getArticles = async (query) => {
+const getArticles = async (topic, sortBy) => {
   try {
     const res = await api.get("/articles", {
       params: {
-        topic: query
+        topic: topic,
+        sort_by: sortBy
       }
     });
     return res.data;
