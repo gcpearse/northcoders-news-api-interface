@@ -144,6 +144,102 @@ ul {
   margin-bottom: 0.6em;
 }
 
+/* Home Page */
+
+#home-header {
+  margin: 0.9em auto 0.8em;
+  border: 3px solid #E71D36;
+  border-radius: 6px;
+  padding: 0.4em 0.3em;
+  background: #FDFFFC;
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 400px;
+  max-width: 88vw;
+}
+
+#home-intro {
+  margin: 0 auto;
+  width: 410px;
+  max-width: 90vw;
+  text-align: justify;
+}
+
+.intro-body {
+  margin-bottom: 0.8em;
+  line-height: 1.4rem;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #011627;
+}
+
+.home-feature-header {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.home-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#trending-topics {
+  margin: 1.8em auto;
+  border-radius: 2px;
+  padding: 1.2em 1em;
+  background: #FDFFFC;
+  width: 220px;
+  max-width: 70vw;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 0 4px #011627;
+}
+
+#trending-topic-container {
+  margin: 1em;
+}
+
+.trending-topic {
+  border-radius: 10px;
+  padding: 0.8em 0.6em 0.9em;
+  background: #FECF8C;
+  font-weight: 500;
+}
+
+#cycle-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cycle-btn {
+  border: none;
+  border-radius: 100%;
+  background: #E6EAE9;
+  height: 2.4em;
+  width: 2.4em;
+}
+
+#reset-btn {
+  border: none;
+  border-radius: 10px;
+  background: #E6EAE9;
+  height: 2.4em;
+  width: 4.6em;
+  font-weight: 400;
+}
+
+.cycle-btn:hover,
+#reset-btn:hover {
+  background: #CFD5D5;
+}
+
+.cycle-btn:active,
+#reset-btn:active {
+  background: #B8BFC2;
+}
+
 /* News Page - Search Bar */
 
 #search-bar {
@@ -215,7 +311,7 @@ ul {
 
 .order-btn:disabled:hover,
 .order-btn:disabled:active {
-  cursor:auto;
+  cursor: auto;
   background: #E6EAE9;
 }
 
@@ -467,12 +563,12 @@ textarea {
 
 .topic {
   margin: 1.8em auto;
-  border: 2px solid #FECF8C;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1em;
   background: #FDFFFC;
   width: 360px;
   max-width: 80vw;
+  box-shadow: 0 0 4px #011627;
 }
 
 .topic:hover {
@@ -482,7 +578,6 @@ textarea {
 
 .topic:active {
   background: #FEBF67;
-  border: 2px solid #FEBF67;
 }
 
 #topic-header {
