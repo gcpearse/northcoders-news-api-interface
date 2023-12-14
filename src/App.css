@@ -145,13 +145,9 @@ a {
 }
 
 #error-header {
-  margin: 0.2em auto 0.4em;
+  margin: 0.6em auto;
   font-size: 1.4rem;
   font-weight: 600;
-}
-
-#error-msg {
-  margin-bottom: 0.6em;
 }
 
 /* Home Page */
@@ -553,6 +549,14 @@ textarea {
   color: #FDFFFC;
   font-size: 1.1rem;
   font-weight: 500;
+}
+
+.site-nav-btn:hover {
+  background: #D21C35;
+}
+
+.site-nav-btn:active {
+  background: #BD1C33;
 }
 
 /* Topics Page */
