@@ -6,6 +6,7 @@ import SingleArticle from "./pages/article/SingleArticle";
 import { useEffect, useState } from "react";
 import { getTopics } from "../utils/api-utils";
 import Error from "./Error";
+import User from "./pages/user/User";
 
 const Contents = () => {
 
@@ -33,6 +34,7 @@ const Contents = () => {
         <Route path="/news" element={<News topics={topics} />}></Route>
         <Route path="/news/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>
+        <Route path="/users/:username" element={<User />}></Route>
         <Route path="/*" element={<Error message={"Oops! That page does not exist!"} />}></Route>
       </Routes>
     </main>
