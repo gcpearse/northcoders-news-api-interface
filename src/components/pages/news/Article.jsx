@@ -20,7 +20,7 @@ const Article = ({ article }) => {
           alt="An image representing the topic of the article"
           id="article-img" />
         <p className="article-text">
-          Published by <b id="article-author-keyword">{article.author}</b> at {article.created_at.match(timeRegex)} on {lengthenDate(article.created_at.match(yearRegex)[0])}.
+          Published by <Link className="username-link" to={`/users/${article.author}`}><b id="article-author-keyword">{article.author}</b></Link> at {article.created_at.match(timeRegex)} on {lengthenDate(article.created_at.match(yearRegex)[0])}.
         </p>
         <div className="count-container">
           <p>{article.comment_count} comments</p>
