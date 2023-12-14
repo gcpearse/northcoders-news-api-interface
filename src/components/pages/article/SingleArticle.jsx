@@ -5,6 +5,7 @@ import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import Comments from "./Comments";
 import CommentViewer from "./CommentViewer";
 import { UserContext } from "../../../contexts/UserContext";
+import Error from "../../Error";
 
 const SingleArticle = () => {
 
@@ -18,6 +19,7 @@ const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [apiError, setApiError] = useState(null);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -29,7 +31,7 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setApiError(err);
         setIsLoading(false);
         setIsError(true);
       });
@@ -76,7 +78,7 @@ const SingleArticle = () => {
   };
 
   if (isLoading) return <p>Loading content...</p>;
-  if (isError) return <p>Oops! Something went wrong...</p>;
+  if (isError) return <Error message={apiError} />;
 
   return (
     <section>

@@ -22,7 +22,13 @@ const getArticleById = async (article_id) => {
     const res = await api.get(`/articles/${article_id}`);
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (err.response.status === 404) {
+      return Promise.reject(`That article does not exist!`);
+    }
+    if (err.response.status === 400) {
+      return Promise.reject(`Bad request!`);
+    }
+    return Promise.reject(err);
   }
 };
 
