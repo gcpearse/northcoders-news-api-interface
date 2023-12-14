@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserByUsername } from "../../../utils/api-utils";
 import { useNavigate, useParams } from "react-router-dom";
+import Error from "../../Error";
 
 const User = () => {
 
@@ -9,13 +10,25 @@ const User = () => {
   const { username } = useParams();
 
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
     getUserByUsername(username)
       .then(({ user }) => {
         setUser(user);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setApiError(err.message)
+        setIsLoading(false);
+        setIsError(true);
       });
   });
+
+  if (isLoading) return <p>Loading content...</p>;
+  if (isError) return <Error message={apiError} />;
 
   return (
     <section>

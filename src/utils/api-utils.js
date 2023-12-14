@@ -77,6 +77,13 @@ const getUserByUsername = async (username) => {
     return res.data;
   } catch (err) {
     console.log(err);
+    if (err.response.status === 404) {
+      return Promise.reject({ message: "That user does not exist!" });
+    }
+    if (err.response.status === 400) {
+      return Promise.reject({ message: "Bad request!" });
+    }
+    return Promise.reject(err.message);
   }
 };
 
