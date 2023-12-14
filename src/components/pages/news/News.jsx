@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../../../utils/api-utils";
 import Article from "./Article";
 import { useSearchParams } from "react-router-dom";
+import Error from "../../Error";
 
 const News = ({ topics }) => {
 
@@ -16,6 +17,7 @@ const News = ({ topics }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
     getArticles(topicQuery, sortByQuery, orderQuery)
@@ -24,7 +26,7 @@ const News = ({ topics }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setApiError(err.message);
         setIsLoading(false);
         setIsError(true);
       });
@@ -67,7 +69,7 @@ const News = ({ topics }) => {
   };
 
   if (isLoading) return <p>Loading content...</p>;
-  if (isError) return <p>Oops! Something went wrong...</p>;
+  if (isError) return <Error message={apiError} />;
 
   return (
     <section>

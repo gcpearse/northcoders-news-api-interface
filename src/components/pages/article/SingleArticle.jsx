@@ -31,7 +31,7 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setApiError(err);
+        setApiError(err.message);
         setIsLoading(false);
         setIsError(true);
       });

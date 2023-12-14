@@ -14,6 +14,17 @@ const getArticles = async (topic, sortBy, order) => {
     return res.data;
   } catch (err) {
     console.log(err);
+    if (err.response.status === 404) {
+      if (err.response.config.params.topic) {
+        return Promise.reject({ message: "That topic does not exist!" });
+      } else {
+        return Promise.reject({ message: "That page does not exist!" });
+      }
+    }
+    if (err.response.status === 400) {
+      return Promise.reject({ message: "Bad request!" });
+    }
+    return Promise.reject(err.message);
   }
 };
 
@@ -22,13 +33,14 @@ const getArticleById = async (article_id) => {
     const res = await api.get(`/articles/${article_id}`);
     return res.data;
   } catch (err) {
+    console.log(err);
     if (err.response.status === 404) {
-      return Promise.reject(`That article does not exist!`);
+      return Promise.reject({ message: "That article does not exist!" });
     }
     if (err.response.status === 400) {
-      return Promise.reject(`Bad request!`);
+      return Promise.reject({ message: "Bad request!" });
     }
-    return Promise.reject(err);
+    return Promise.reject(err.message);
   }
 };
 
