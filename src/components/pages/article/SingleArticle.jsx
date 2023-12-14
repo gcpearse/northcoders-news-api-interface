@@ -104,8 +104,18 @@ const SingleArticle = () => {
             setShowComments(!showComments);
           }}>{showComments ? "Hide comments" : "Show comments"}</button>
           <div>
-            <button className="vote-btn upvote-btn" onClick={handleUpvote}>+</button>
-            <button className="vote-btn downvote-btn" onClick={handleDownVote}>-</button>
+            <button
+              className="vote-btn upvote-btn"
+              onClick={handleUpvote}
+              onBlur={() => setError(null)}>
+              +
+            </button>
+            <button
+              className="vote-btn downvote-btn"
+              onClick={handleDownVote}
+              onBlur={() => setError(null)}>
+              -
+            </button>
           </div>
         </div>
         <CommentViewer showComments={showComments}>
