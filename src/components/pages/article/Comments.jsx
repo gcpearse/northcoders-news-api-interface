@@ -56,7 +56,7 @@ const Comments = ({ article_id, toggle, setToggle }) => {
     <section>
       <h3 id="comments-header">Comments</h3>
       <div>
-        <form id="new-comment-form" onSubmit={handleSubmit}>
+        <form id="new-comment-form" onSubmit={handleSubmit} onBlur={() => setError(null)}>
           <textarea
             name="new-comment"
             id="new-comment"

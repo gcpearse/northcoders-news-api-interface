@@ -112,6 +112,8 @@ select:hover,
   cursor: pointer;
 }
 
+/* General */
+
 main {
   margin: 1em auto 0;
   padding-bottom: 7rem;
@@ -120,6 +122,26 @@ main {
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+#error-section {
+  margin: 2em auto;
+  border: 3px solid #E71D36;
+  border-radius: 15px;
+  padding: 0.4em 0.1em;
+  background: #FDFFFC;
+  width: 380px;
+  max-width: 90vw;
+}
+
+#error-header {
+  margin: 0.2em auto 0.4em;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+#error-msg {
+  margin-bottom: 0.6em;
 }
 
 /* News Page - Search Bar */
