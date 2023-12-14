@@ -71,6 +71,15 @@ const getUsers = async () => {
   }
 };
 
+const getUserByUsername = async (username) => {
+  try {
+    const res = await api.get(`/users/${username}`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const postComment = async (article_id, body) => {
   const res = await api.post(`/articles/${article_id}/comments`, body);
   return res.data;
@@ -92,6 +101,7 @@ export {
   getCommentsByArticleId,
   getTopics,
   getUsers,
+  getUserByUsername,
   postComment,
   patchArticleById,
   deleteComment
