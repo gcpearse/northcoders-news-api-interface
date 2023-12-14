@@ -92,7 +92,9 @@ const SingleArticle = () => {
         <p className="timestamp">
           {singleArticle.created_at.match(timeRegex)} on {lengthenDate(singleArticle.created_at.match(yearRegex)[0])}
         </p>
-        <p className="author">{singleArticle.author}</p>
+        <Link className="username-link" to={`/users/${singleArticle.author}`}>
+          <p className="author">{singleArticle.author}</p>
+        </Link>
         <p className="text-body">{singleArticle.body}</p>
         <div className="count-container">
           <p>{singleArticle.comment_count} comments</p>

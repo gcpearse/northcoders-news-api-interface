@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import { UserContext } from "../../../contexts/UserContext";
 import { deleteComment } from "../../../utils/api-utils";
+import { Link } from "react-router-dom";
 
 const Comment = ({ comment, toggle, setToggle, setComments }) => {
 
@@ -36,7 +37,9 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
 
   return (
     <div id="comment">
-      <p className="author">{comment.author}</p>
+      <Link className="username-link" to={`/users/${comment.author}`}>
+        <p className="author">{comment.author}</p>
+      </Link>
       <p className="timestamp">
         {comment.created_at.match(timeRegex)} on {lengthenDate(comment.created_at.match(yearRegex)[0])}
       </p>

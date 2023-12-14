@@ -41,7 +41,6 @@ nav {
 }
 
 .nav-link {
-  text-decoration: none;
   color: #E71D36;
   font-size: 1.1em;
   font-weight: 500;
@@ -124,6 +123,17 @@ ul {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.username-link:hover {
+  color: #1D36E7;
+}
+
+/* Error */
+
 #error-section {
   margin: 2em auto;
   border: 3px solid #E71D36;
@@ -168,11 +178,6 @@ ul {
 .intro-body {
   margin-bottom: 0.8em;
   line-height: 1.4rem;
-}
-
-.home-link {
-  text-decoration: none;
-  color: #011627;
 }
 
 .home-feature-header {
@@ -556,11 +561,6 @@ textarea {
   margin-top: 1.6em;
 }
 
-.topic-link {
-  text-decoration: none;
-  color: #011627;
-}
-
 .topic {
   margin: 1.8em auto;
   border-radius: 8px;
@@ -587,6 +587,32 @@ textarea {
 
 #topic-body {
   font-size: 0.85em;
+}
+
+/* User Page */
+
+#user-profile {
+  margin: auto;
+  padding: 1em 0 1em;
+  border: 2px solid black;
+  border-radius: 6px;
+  background: #FDFFFC;
+  width: 380px;
+  max-width: 90vw;
+}
+
+#user-username {
+  margin-bottom: 1em;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+#user-avatar {
+  margin-bottom: 1em;
+  object-fit: cover;
+  height: auto;
+  width: 190px;
+  max-width: 81vw;
 }
 
 /* Footer and Scroll Up Button */
