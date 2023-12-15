@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postTopic } from "../../../utils/api-utils";
+import { UserContext } from "../../../contexts/UserContext";
+import Error from "../../Error";
 
 const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) => {
+
+  const { user } = useContext(UserContext);
 
   const [slug, setSlug] = useState("");
   const [desc, setDesc] = useState("");
@@ -51,63 +55,67 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) =
     }
   };
 
-  return (
-    <div id="new-topic-form-container">
-      <h2 id="new-topic-form-header">Create a topic</h2>
-      <form
-        id="new-topic-form"
-        onSubmit={handleSubmit}
-        onBlur={() => setError(null)}>
-        <label
-          htmlFor="topic-slug"
-          className="new-topic-label">
-          Topic (20 characters max)
-        </label>
-        <input
-          type="text"
-          name="slug"
-          className="new-topic-input"
-          id="topic-slug"
-          maxLength={20}
-          value={slug}
-          onChange={handleSlugChange}
-          required />
-        <label
-          htmlFor="topic-desc"
-          className="new-topic-label">
-          Description (50 characters max)
-        </label>
-        <input
-          type="text"
-          name="description"
-          className="new-topic-input"
-          id="topic-desc"
-          maxLength={50}
-          value={desc}
-          onChange={handleDescChange}
-          required />
-        {error ? <p className="error" id="topic-error">{error}</p> : null}
-        <div className="section-btns">
-          <button
-            type="submit"
-            className="grey-btn new-topic-btn">
-            Create
-          </button>
-          <button
-            type="button"
-            className="grey-btn new-topic-btn"
-            onClick={handleClear}>
-            Reset
-          </button>
-        </div>
-      </form>
-      <button
-        className="site-nav-btn"
-        onClick={() => setShowCreateTopic(false)}>
-        Cancel
-      </button>
-    </div>
-  );
+  if (user) {
+    return (
+      <div id="new-topic-form-container">
+        <h2 id="new-topic-form-header">Create a topic</h2>
+        <form
+          id="new-topic-form"
+          onSubmit={handleSubmit}
+          onBlur={() => setError(null)}>
+          <label
+            htmlFor="topic-slug"
+            className="new-topic-label">
+            Topic (20 characters max)
+          </label>
+          <input
+            type="text"
+            name="slug"
+            className="new-topic-input"
+            id="topic-slug"
+            maxLength={20}
+            value={slug}
+            onChange={handleSlugChange}
+            required />
+          <label
+            htmlFor="topic-desc"
+            className="new-topic-label">
+            Description (50 characters max)
+          </label>
+          <input
+            type="text"
+            name="description"
+            className="new-topic-input"
+            id="topic-desc"
+            maxLength={50}
+            value={desc}
+            onChange={handleDescChange}
+            required />
+          {error ? <p className="error" id="topic-error">{error}</p> : null}
+          <div className="section-btns">
+            <button
+              type="submit"
+              className="grey-btn new-topic-btn">
+              Create
+            </button>
+            <button
+              type="button"
+              className="grey-btn new-topic-btn"
+              onClick={handleClear}>
+              Reset
+            </button>
+          </div>
+        </form>
+        <button
+          className="site-nav-btn"
+          onClick={() => setShowCreateTopic(false)}>
+          Cancel
+        </button>
+      </div>
+    );
+  } else {
+    return <Error message={"You must be logged in to use this feature."} />
+  }
 };
 
 export default CreateTopic;
