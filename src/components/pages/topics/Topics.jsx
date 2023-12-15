@@ -4,7 +4,7 @@ import Topic from "./Topic";
 import { UserContext } from "../../../contexts/UserContext";
 import CreateTopicViewer from "./CreateTopicViewer";
 
-const Topics = ({ topics, isLoading, isError }) => {
+const Topics = ({ topics, setTopics, isLoading, isError }) => {
 
   const { user } = useContext(UserContext);
 
@@ -33,7 +33,7 @@ const Topics = ({ topics, isLoading, isError }) => {
       </button> : null}
       {error ? <p className="error" id="new-topic-error">{error}</p> : null}
       <CreateTopicViewer showCreateTopic={showCreateTopic}>
-        <CreateTopic setShowCreateTopic={setShowCreateTopic} />
+        <CreateTopic setShowCreateTopic={setShowCreateTopic} topics={topics} setTopics={setTopics} />
       </CreateTopicViewer>
       <ul>
         {topics.sort((a, b) => {

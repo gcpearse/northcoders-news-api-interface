@@ -1,18 +1,61 @@
-const CreateTopic = ({ setShowCreateTopic }) => {
+import { useState } from "react";
+import { postTopic } from "../../../utils/api-utils";
+
+const CreateTopic = ({ setShowCreateTopic, topics, setTopics }) => {
+
+  const [slug, setSlug] = useState("");
+  const [desc, setDesc] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleSlugChange = (event) => {
+    setSlug(event.target.value);
+  };
+
+  const handleDescChange = (event) => {
+    setDesc(event.target.value);
+  };
+
+  const handleClear = () => {
+    setSlug("");
+    setDesc("");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('clicked!');
+    setError(null);
+    const topic = {
+      slug: slug,
+      description: desc
+    };
+    const currentSlugs = topics.map((topic) => {
+      return topic.slug.toLowerCase();
+    });
+    if (currentSlugs.indexOf(topic.slug.toLowerCase()) === -1) {
+      postTopic(topic)
+        .then(() => {
+          setTopics((currentTopics) => {
+            return [...currentTopics, topic];
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setError("Sorry, that topic already exists!");
+    }
   };
 
   return (
     <div id="new-topic-form-container">
-      <h2>Create a topic</h2>
-      <form id="new-topic-form" onSubmit={handleSubmit}>
+      <h2 id="new-topic-form-header">Create a topic</h2>
+      <form
+        id="new-topic-form"
+        onSubmit={handleSubmit}
+        onBlur={() => setError(null)}>
         <label
           htmlFor="topic-slug"
           className="new-topic-label">
-          Topic (8-20 characters)
+          Topic (20 characters max)
         </label>
         <input
           type="text"
@@ -20,6 +63,8 @@ const CreateTopic = ({ setShowCreateTopic }) => {
           className="new-topic-input"
           id="topic-slug"
           maxLength={20}
+          value={slug}
+          onChange={handleSlugChange}
           required />
         <label
           htmlFor="topic-desc"
@@ -32,11 +77,23 @@ const CreateTopic = ({ setShowCreateTopic }) => {
           className="new-topic-input"
           id="topic-desc"
           maxLength={50}
+          value={desc}
+          onChange={handleDescChange}
           required />
-        <button
-          className="grey-btn new-topic-btn">
-          Create
-        </button>
+        {error ? <p className="error">{error}</p> : null}
+        <div className="section-btns">
+          <button
+            type="submit"
+            className="grey-btn new-topic-btn">
+            Create
+          </button>
+          <button
+            type="button"
+            className="grey-btn new-topic-btn"
+            onClick={handleClear}>
+            Reset
+          </button>
+        </div>
       </form>
       <button
         className="site-nav-btn"
