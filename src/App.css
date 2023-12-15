@@ -187,6 +187,11 @@ a {
   text-underline-offset: 2px;
 }
 
+#trending-topics-loading-msg {
+  margin: 1.8em auto;
+  color: #55646E;
+}
+
 #trending-topics {
   margin: 1.8em auto;
   border-radius: 2px;
