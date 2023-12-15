@@ -53,10 +53,10 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
         </button>}
         <div>
           <button className="vote-btn upvote-btn">
-            &#11014;
+            +
           </button>
           <button className="vote-btn downvote-btn">
-            &#11015;
+            -
           </button>
         </div>
       </div>

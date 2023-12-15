@@ -413,8 +413,8 @@ a {
 .vote-btn {
   border: 1px solid #D3D8D9;
   background: #E6EAE9;
-  height: 2.4em;
-  width: 3em;
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .upvote-btn {
