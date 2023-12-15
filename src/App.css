@@ -639,6 +639,10 @@ textarea {
   line-height: 1.2rem;
 }
 
+#topic-error {
+  margin-top: 1.4em;
+}
+
 .new-topic-btn {
   margin: 1.4em auto 0;
   width: 86px;
