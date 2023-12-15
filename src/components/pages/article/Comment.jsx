@@ -44,14 +44,26 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           if (currentComment.comment_id === comment.comment_id) {
             return { ...currentComment, votes: currentComment.votes + 1 };
           }
-          return currentComment
+          return currentComment;
         });
-        return updatedComments
+        return updatedComments;
       });
       setError(null);
       patchCommentById(comment.comment_id, {
         "inc_votes": 1
-      });
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setComments((currentComments) => {
+            const updatedComments = currentComments.map((currentComment) => {
+              if (currentComment.comment_id === comment.comment_id) {
+                return { ...currentComment, votes: currentComment.votes - 1 };
+              }
+              return currentComment;
+            });
+            return updatedComments;
+          });
+        });
     } else {
       setError("You must be logged in to vote.");
     }
@@ -64,14 +76,26 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           if (currentComment.comment_id === comment.comment_id) {
             return { ...currentComment, votes: currentComment.votes - 1 };
           }
-          return currentComment
+          return currentComment;
         });
-        return updatedComments
+        return updatedComments;
       });
       setError(null);
       patchCommentById(comment.comment_id, {
         "inc_votes": -1
-      });
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setComments((currentComments) => {
+            const updatedComments = currentComments.map((currentComment) => {
+              if (currentComment.comment_id === comment.comment_id) {
+                return { ...currentComment, votes: currentComment.votes + 1 };
+              }
+              return currentComment;
+            });
+            return updatedComments;
+          });
+        });
     } else {
       setError("You must be logged in to vote.");
     }
