@@ -1,6 +1,22 @@
+import { useContext, useState } from "react";
+import CreateTopic from "./CreateTopic";
 import Topic from "./Topic";
+import { UserContext } from "../../../contexts/UserContext";
 
 const Topics = ({ topics, isLoading, isError }) => {
+
+  const { user } = useContext(UserContext);
+
+  const [showCreateTopic, setShowCreateTopic] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleClick = () => {
+    if (user) {
+      console.log('ok');
+    } else {
+      setError("You must be logged in to create a topic.");
+    }
+  };
 
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
@@ -8,6 +24,14 @@ const Topics = ({ topics, isLoading, isError }) => {
   return (
     <section>
       <p id="topics-intro">Click on any topic to view associated articles.</p>
+      {!showCreateTopic ? <button
+        id="new-topic-btn"
+        onClick={handleClick}
+        onBlur={() => setError(null)}>
+        Create a new topic
+      </button> : null}
+      {error ? <p className="error">{error}</p> : null}
+      <CreateTopic />
       <ul>
         {topics.sort((a, b) => {
           if (a.slug > b.slug) return 1;
