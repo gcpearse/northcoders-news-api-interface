@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { formatWord, lengthenDate } from "../../../utils/formatting-utils";
 import { UserContext } from "../../../contexts/UserContext";
-import { deleteComment } from "../../../utils/api-utils";
+import { deleteComment, patchCommentById } from "../../../utils/api-utils";
 import { Link } from "react-router-dom";
 
 const Comment = ({ comment, toggle, setToggle, setComments }) => {
@@ -10,6 +10,8 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
   const yearRegex = /\d{4}-\d{2}-\d{2}/;
 
   const { user } = useContext(UserContext);
+
+  const [error, setError] = useState(null);
 
   const handleDelete = () => {
     let index = 0;
@@ -35,6 +37,70 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
     }
   };
 
+  const handleUpvote = () => {
+    if (user) {
+      setComments((currentComments) => {
+        const updatedComments = currentComments.map((currentComment) => {
+          if (currentComment.comment_id === comment.comment_id) {
+            return { ...currentComment, votes: currentComment.votes + 1 };
+          }
+          return currentComment;
+        });
+        return updatedComments;
+      });
+      setError(null);
+      patchCommentById(comment.comment_id, {
+        "inc_votes": 1
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setComments((currentComments) => {
+            const updatedComments = currentComments.map((currentComment) => {
+              if (currentComment.comment_id === comment.comment_id) {
+                return { ...currentComment, votes: currentComment.votes - 1 };
+              }
+              return currentComment;
+            });
+            return updatedComments;
+          });
+        });
+    } else {
+      setError("You must be logged in to vote.");
+    }
+  };
+
+  const handleDownvote = () => {
+    if (user) {
+      setComments((currentComments) => {
+        const updatedComments = currentComments.map((currentComment) => {
+          if (currentComment.comment_id === comment.comment_id) {
+            return { ...currentComment, votes: currentComment.votes - 1 };
+          }
+          return currentComment;
+        });
+        return updatedComments;
+      });
+      setError(null);
+      patchCommentById(comment.comment_id, {
+        "inc_votes": -1
+      })
+        .catch(() => {
+          setError("Oops! Something went wrong...");
+          setComments((currentComments) => {
+            const updatedComments = currentComments.map((currentComment) => {
+              if (currentComment.comment_id === comment.comment_id) {
+                return { ...currentComment, votes: currentComment.votes + 1 };
+              }
+              return currentComment;
+            });
+            return updatedComments;
+          });
+        });
+    } else {
+      setError("You must be logged in to vote.");
+    }
+  };
+
   return (
     <div id="comment">
       <Link className="username-link" to={`/users/${comment.author}`}>
@@ -52,14 +118,21 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           Delete
         </button>}
         <div>
-          <button className="vote-btn upvote-btn">
+          <button
+            className="vote-btn upvote-btn"
+            onClick={handleUpvote}
+            onBlur={() => setError(null)}>
             +
           </button>
-          <button className="vote-btn downvote-btn">
+          <button
+            className="vote-btn downvote-btn"
+            onClick={handleDownvote}
+            onBlur={() => setError(null)}>
             -
           </button>
         </div>
       </div>
+      {error ? <p className="error">{error}</p> : null}
       <p className="error">{comment.error}</p>
     </div>
   );

@@ -97,6 +97,11 @@ const patchArticleById = async (article_id, body) => {
   return res.data;
 };
 
+const patchCommentById = async (comment_id, body) => {
+  const res = await api.patch(`/comments/${comment_id}`, body);
+  return res.data;
+};
+
 const deleteComment = async (comment_id) => {
   const res = await api.delete(`/comments/${comment_id}`);
   return res.data;
@@ -111,5 +116,6 @@ export {
   getUserByUsername,
   postComment,
   patchArticleById,
+  patchCommentById,
   deleteComment
 };

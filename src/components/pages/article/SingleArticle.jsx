@@ -57,7 +57,7 @@ const SingleArticle = () => {
     }
   };
 
-  const handleDownVote = () => {
+  const handleDownvote = () => {
     if (user) {
       setSingleArticle((currentArticle) => {
         return { ...currentArticle, votes: currentArticle.votes - 1 };
@@ -114,7 +114,7 @@ const SingleArticle = () => {
             </button>
             <button
               className="vote-btn downvote-btn"
-              onClick={handleDownVote}
+              onClick={handleDownvote}
               onBlur={() => setError(null)}>
               -
             </button>
