@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import CreateTopic from "./CreateTopic";
 import Topic from "./Topic";
 import { UserContext } from "../../../contexts/UserContext";
+import CreateTopicViewer from "./CreateTopicViewer";
 
 const Topics = ({ topics, isLoading, isError }) => {
 
@@ -12,7 +13,7 @@ const Topics = ({ topics, isLoading, isError }) => {
 
   const handleClick = () => {
     if (user) {
-      console.log('ok');
+      setShowCreateTopic(true);
     } else {
       setError("You must be logged in to create a topic.");
     }
@@ -30,8 +31,10 @@ const Topics = ({ topics, isLoading, isError }) => {
         onBlur={() => setError(null)}>
         Create a new topic
       </button> : null}
-      {error ? <p className="error">{error}</p> : null}
-      <CreateTopic />
+      {error ? <p className="error" id="new-topic-error">{error}</p> : null}
+      <CreateTopicViewer showCreateTopic={showCreateTopic}>
+        <CreateTopic setShowCreateTopic={setShowCreateTopic} />
+      </CreateTopicViewer>
       <ul>
         {topics.sort((a, b) => {
           if (a.slug > b.slug) return 1;
