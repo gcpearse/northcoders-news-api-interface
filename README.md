@@ -4,6 +4,8 @@
 
 Northcoders News mimics a real-world forum on which users are able to browse articles, post or delete comments, and vote on other users' content.
 
+The live site can be visited [here](https://northcoders-news-api-interface.netlify.app/).
+
 When users interact with the site, requests are made to my **Northcoders News API**. The back-end repository and a link to that API can be found [here](https://github.com/gcpearse/northcoders-news-api).
 
 The API is hosted with a free plan and spins down with inactivity, so please allow some time for it to load.
