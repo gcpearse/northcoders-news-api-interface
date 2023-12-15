@@ -36,6 +36,7 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics }) => {
           setTopics((currentTopics) => {
             return [...currentTopics, topic];
           });
+          setShowCreateTopic(false);
         })
         .catch((err) => {
           console.log(err);
