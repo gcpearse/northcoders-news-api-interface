@@ -277,7 +277,7 @@ a {
 #topic-label,
 #order-btns {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
   margin: 0.5em auto;
@@ -286,19 +286,10 @@ a {
 
 #sort-by-dropdown,
 #topic-dropdown {
-  grid-column: 2 / 7;
+  grid-column: 2 / 4;
   padding: 0.3em 0;
   width: auto;
   font-size: 0.85rem;
-}
-
-.search-btn {
-  grid-column: 7;
-  margin-left: 25%;
-  border: 1px solid #D3D8D9;
-  border-radius: 6px;
-  background: #E6EAE9;
-  line-height: 1.5rem;
 }
 
 #order-btns {
@@ -313,12 +304,12 @@ a {
 }
 
 #asc-btn {
-  grid-column: 2 / 5;
+  grid-column: 2;
   margin-right: 0.6em;
 }
 
 #desc-btn {
-  grid-column: 5 / 8;
+  grid-column: 3;
   margin-left: 0.6em;
 }
 
