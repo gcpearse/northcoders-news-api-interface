@@ -131,7 +131,7 @@ const News = ({ topics }) => {
       </div>
       {!articles.length ? <div className="error-section">
         <p className="error-body">
-          No articles found for {topicQuery[0].toUpperCase() + topicQuery.slice(1).toLowerCase()}
+          No articles found
         </p>
       </div> : null}
       <ul id="articles-list">
