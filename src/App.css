@@ -569,7 +569,7 @@ textarea {
 }
 
 #new-topic-btn {
-  margin: 1.6em auto;
+  margin: 1.6em auto 0;
   border: none;
   border-radius: 15px;
   padding: 0.4em 0.9em 0.5em;
@@ -587,11 +587,44 @@ textarea {
   background: #73D8CD;
 }
 
+#new-topic-error {
+  margin-top: 1.6em;
+}
+
+#new-topic-form-container {
+  margin: 3em auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1em 1em 0;
+  background: #FDFFFC;
+  height: auto;
+  width: 360px;
+  max-width: 80vw;
+}
+
+#new-topic-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-topic-label {
+  text-align: start;
+  margin: 0.6em;
+}
+
+.new-topic-input {
+  line-height: 1.2rem;
+}
+
+.new-topic-btn {
+  margin: 1.1em auto 0;
+}
+
 .topic {
   margin: 1.8em auto;
   border-radius: 8px;
   padding: 1em;
-  background: #FDFFFC;
+  background: #FDEFD7;
   width: 360px;
   max-width: 80vw;
   box-shadow: 0 0 4px #011627;
@@ -599,11 +632,11 @@ textarea {
 
 .topic:hover {
   cursor: pointer;
-  background: #FECF8C;
+  background: #FEDFB1;
 }
 
 .topic:active {
-  background: #FEBF67;
+  background: #FECF8C;
 }
 
 #topic-header {
