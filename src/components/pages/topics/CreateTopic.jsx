@@ -24,13 +24,13 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics }) => {
     event.preventDefault();
     setError(null);
     const topic = {
-      slug: slug,
+      slug: slug.toLowerCase(),
       description: desc
     };
     const currentSlugs = topics.map((topic) => {
       return topic.slug.toLowerCase();
     });
-    if (currentSlugs.indexOf(topic.slug.toLowerCase()) === -1) {
+    if (currentSlugs.indexOf(topic.slug) === -1) {
       postTopic(topic)
         .then(() => {
           setTopics((currentTopics) => {

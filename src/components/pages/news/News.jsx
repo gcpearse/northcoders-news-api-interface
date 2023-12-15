@@ -83,11 +83,7 @@ const News = ({ topics }) => {
               defaultValue={topicQuery}
               onChange={handleTopicChange}>
               <option value="">All topics</option>
-              {topics.sort((a, b) => {
-                if (a.slug > b.slug) return 1;
-                if (a.slug < b.slug) return -1;
-                return 0;
-              }).map((topic) => {
+              {topics.map((topic) => {
                 return <option key={topic.slug} value={topic.slug}>
                   {topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}
                 </option>;

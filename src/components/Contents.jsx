@@ -17,7 +17,12 @@ const Contents = () => {
   useEffect(() => {
     getTopics()
       .then(({ topics }) => {
-        setTopics(topics);
+        const sortedTopics = topics.sort((a, b) => {
+          if (a.slug > b.slug) return 1;
+          if (a.slug < b.slug) return -1;
+          return 0;
+        })
+        setTopics(sortedTopics);
         setIsLoading(false);
       })
       .catch((err) => {

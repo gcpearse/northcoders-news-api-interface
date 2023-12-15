@@ -39,11 +39,7 @@ const Topics = ({ topics, setTopics, isLoading, isError }) => {
           setTopics={setTopics} />
       </CreateTopicViewer>
       <ul>
-        {topics.sort((a, b) => {
-          if (a.slug > b.slug) return 1;
-          if (a.slug < b.slug) return -1;
-          return 0;
-        }).map((topic) => {
+        {topics.map((topic) => {
           return <Topic key={topic.slug} topic={topic} />;
         })}
       </ul>
