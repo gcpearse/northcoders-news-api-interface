@@ -135,7 +135,7 @@ a {
 
 /* Error */
 
-#error-section {
+.error-section {
   margin: 2em auto;
   border: 3px solid #E71D36;
   border-radius: 15px;
@@ -145,10 +145,14 @@ a {
   max-width: 90vw;
 }
 
-#error-header {
+.error-header {
   margin: 0.6em auto;
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.error-body {
+  margin: 0.2em auto;
 }
 
 /* Home Page */
@@ -718,16 +722,13 @@ footer {
   bottom: 0;
   right: 0;
   border: none;
-  border-top: 2px solid #D3D8D9;
-  border-left: 2px solid #D3D8D9;
   border-radius: 4px 0 0 0;
-  padding: 0.4rem 0.6rem;
+  padding: 0.8rem 1.2rem;
   background: #FDFFFC;
   color: #011627;
   font-weight: 500;
 }
 
 #scroll-up-btn:active {
-  border-top: 2px solid #FDFFFC;
-  border-left: 2px solid #FDFFFC;
+  color: #55646E;
 }
