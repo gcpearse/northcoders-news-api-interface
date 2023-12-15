@@ -86,7 +86,7 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) =
           value={desc}
           onChange={handleDescChange}
           required />
-        {error ? <p className="error">{error}</p> : null}
+        {error ? <p className="error" id="topic-error">{error}</p> : null}
         <div className="section-btns">
           <button
             type="submit"

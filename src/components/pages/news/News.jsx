@@ -11,9 +11,6 @@ const News = ({ topics }) => {
   const topicQuery = searchParams.get("topic");
   const orderQuery = searchParams.get("order");
 
-  const [sortBy, setSortBy] = useState("");
-  const [topic, setTopic] = useState("");
-
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -51,21 +48,11 @@ const News = ({ topics }) => {
   };
 
   const handleSortByChange = (event) => {
-    setSortBy(event.target.value);
-  };
-
-  const handleSortBySubmit = (event) => {
-    event.preventDefault();
-    if (sortBy) setSortByQuery(sortBy);
+    setSortByQuery(event.target.value);
   };
 
   const handleTopicChange = (event) => {
-    setTopic(event.target.value);
-  };
-
-  const handleTopicSubmit = (event) => {
-    event.preventDefault();
-    setTopicQuery(topic);
+    setTopicQuery(event.target.value);
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -74,7 +61,7 @@ const News = ({ topics }) => {
   return (
     <section>
       <div id="search-bar">
-        <form onSubmit={handleTopicSubmit}>
+        <form>
           <label id="topic-label" htmlFor="topic-dropdown">
             Search
             <select
@@ -89,10 +76,7 @@ const News = ({ topics }) => {
                 </option>;
               })}
             </select>
-            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
           </label>
-        </form>
-        <form id="sort-by-form" onSubmit={handleSortBySubmit}>
           <label id="sort-by-label" htmlFor="sort-by-dropdown">
             Sort by
             <select
@@ -106,7 +90,6 @@ const News = ({ topics }) => {
               <option value="title">Title</option>
               <option value="votes">Votes</option>
             </select>
-            <input type="submit" value="&#x1F50D;" className="select-btn search-btn" />
           </label>
         </form>
         <div id="order-btns">
