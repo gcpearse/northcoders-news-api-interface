@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TrendingTopic from "./TrendingTopic";
 import { UserContext } from "../../../contexts/UserContext";
 
-const Home = ({ topics }) => {
+const Home = ({ topics, isLoading }) => {
 
   const { user } = useContext(UserContext);
 
@@ -35,6 +35,7 @@ const Home = ({ topics }) => {
       </section>
       <article id="trending-topics">
         <h3 className="home-feature-header">Trending topics</h3>
+        {isLoading ? <p id="trending-topics-loading-msg">Loading topics...</p> : null}
         <ul>
           {topics.map((topic) => {
             return <TrendingTopic topic={topic} />;

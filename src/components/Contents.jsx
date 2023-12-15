@@ -35,7 +35,7 @@ const Contents = () => {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home topics={topics} />}></Route>
+        <Route path="/" element={<Home topics={topics} isLoading={isLoading} />}></Route>
         <Route path="/news" element={<News topics={topics} />}></Route>
         <Route path="/news/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>
