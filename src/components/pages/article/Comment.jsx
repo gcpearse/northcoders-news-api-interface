@@ -39,6 +39,15 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
 
   const handleUpvote = () => {
     if (user) {
+      setComments((currentComments) => {
+        const updatedComments = currentComments.map((currentComment) => {
+          if (currentComment.comment_id === comment.comment_id) {
+            return { ...currentComment, votes: currentComment.votes + 1 };
+          }
+          return currentComment
+        });
+        return updatedComments
+      });
       setError(null);
       patchCommentById(comment.comment_id, {
         "inc_votes": 1
@@ -50,6 +59,15 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
 
   const handleDownvote = () => {
     if (user) {
+      setComments((currentComments) => {
+        const updatedComments = currentComments.map((currentComment) => {
+          if (currentComment.comment_id === comment.comment_id) {
+            return { ...currentComment, votes: currentComment.votes - 1 };
+          }
+          return currentComment
+        });
+        return updatedComments
+      });
       setError(null);
       patchCommentById(comment.comment_id, {
         "inc_votes": -1
