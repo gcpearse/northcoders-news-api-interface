@@ -221,6 +221,7 @@ a {
   background: #E6EAE9;
   height: 2.4em;
   width: 2.4em;
+  color: #011627;
 }
 
 #reset-btn {
@@ -230,6 +231,7 @@ a {
   height: 2.4em;
   width: 4.6em;
   font-weight: 400;
+  color: #011627;
 }
 
 .cycle-btn:hover,
@@ -415,6 +417,7 @@ a {
   background: #E6EAE9;
   font-size: 1.4rem;
   text-align: center;
+  color: #011627;
 }
 
 .upvote-btn {
