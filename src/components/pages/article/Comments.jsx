@@ -30,8 +30,8 @@ const Comments = ({ article_id, toggle, setToggle }) => {
     event.preventDefault();
     if (user && input) {
       const body = {
-        "username": user,
-        "body": input
+        username: user,
+        body: input
       };
       postComment(article_id, body)
         .then(() => {
@@ -56,7 +56,10 @@ const Comments = ({ article_id, toggle, setToggle }) => {
     <section>
       <h3 id="comments-header">Comments</h3>
       <div>
-        <form id="new-comment-form" onSubmit={handleSubmit} onBlur={() => setError(null)}>
+        <form
+          id="new-comment-form"
+          onSubmit={handleSubmit}
+          onBlur={() => setError(null)}>
           <textarea
             name="new-comment"
             id="new-comment"
@@ -64,15 +67,28 @@ const Comments = ({ article_id, toggle, setToggle }) => {
             value={input}
             onChange={(event) => setInput(event.target.value)}></textarea>
           <div className="section-btns">
-            <button type="submit" className="grey-btn">Submit</button>
-            <button type="button" className="grey-btn" onClick={() => setInput("")}>Clear</button>
+            <button
+              type="submit"
+              className="grey-btn">
+              Submit
+            </button>
+            <button
+              type="button"
+              className="grey-btn"
+              onClick={() => setInput("")}>
+              Clear
+            </button>
           </div>
           {error ? <p className="error">{error}</p> : null}
         </form>
       </div>
       <ul>
         {comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment} toggle={toggle} setToggle={setToggle} setComments={setComments} />;
+          return <Comment
+            key={comment.comment_id}
+            comment={comment} toggle={toggle}
+            setToggle={setToggle}
+            setComments={setComments} />;
         })}
       </ul>
     </section>

@@ -33,7 +33,10 @@ const Topics = ({ topics, setTopics, isLoading, isError }) => {
       </button> : null}
       {error ? <p className="error" id="new-topic-error">{error}</p> : null}
       <CreateTopicViewer showCreateTopic={showCreateTopic}>
-        <CreateTopic setShowCreateTopic={setShowCreateTopic} topics={topics} setTopics={setTopics} />
+        <CreateTopic
+          setShowCreateTopic={setShowCreateTopic}
+          topics={topics}
+          setTopics={setTopics} />
       </CreateTopicViewer>
       <ul>
         {topics.sort((a, b) => {
