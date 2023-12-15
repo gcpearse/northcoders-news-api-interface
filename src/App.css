@@ -59,14 +59,15 @@ nav {
   align-items: center;
   border-top: 1px solid #D3D8D9;
   border-bottom: 1px solid #D3D8D9;
-  padding-right: 5%;
+  padding-right: 3%;
   background: #FDFFFC;
-  height: 2.8em;
+  height: 3.4em;
   font-size: 0.9em;
 }
 
 #login-form {
   display: flex;
+  align-items: center;
 }
 
 .visible-element {
@@ -81,8 +82,8 @@ nav {
 
 #user-selection {
   border-radius: 4px;
-  height: 23.2px;
-  max-width: 124px;
+  height: 1.9rem;
+  max-width: 125px;
 }
 
 #login-btn {
@@ -90,7 +91,8 @@ nav {
   border: 1px ridge #011627;
   border-radius: 6px;
   background: #E6EAE9;
-  line-height: 1.2rem;
+  line-height: 1.7rem;
+  width: 5.2em;
   color: #011627;
 }
 
@@ -158,10 +160,10 @@ a {
 /* Home Page */
 
 #home-header {
-  margin: 0.9em auto 0.8em;
-  border: 3px solid #E71D36;
+  margin: 1.6em auto;
+  border: 2px solid #E71D36;
   border-radius: 6px;
-  padding: 0.4em 0.3em;
+  padding: 0.5em 0.3em;
   background: #FDFFFC;
   font-size: 1.4rem;
   font-weight: 500;
@@ -197,7 +199,7 @@ a {
 }
 
 #trending-topics {
-  margin: 1.8em auto;
+  margin: 2.2em auto;
   border-radius: 2px;
   padding: 1.2em 1em;
   background: #FDFFFC;
@@ -209,7 +211,7 @@ a {
 }
 
 #trending-topic-container {
-  margin: 1em;
+  margin: 1.8em 1em;
 }
 
 .trending-topic {
@@ -222,14 +224,15 @@ a {
 #cycle-btns {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .cycle-btn {
   border: none;
   border-radius: 100%;
   background: #E6EAE9;
-  height: 2.4em;
-  width: 2.4em;
+  height: 2.8em;
+  width: 2.8em;
   color: #011627;
 }
 
@@ -239,6 +242,7 @@ a {
   background: #E6EAE9;
   height: 2.4em;
   width: 4.6em;
+  font-size: 1rem;
   font-weight: 400;
   color: #011627;
 }
@@ -569,12 +573,12 @@ textarea {
 }
 
 #new-topic-btn {
-  margin: 1.6em auto 0;
+  margin: 1.4em auto 0;
   border: none;
-  border-radius: 15px;
-  padding: 0.4em 0.9em 0.5em;
+  border-radius: 20px;
+  padding: 0.6em 1em 0.7em;
   background: #FDFFFC;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #011627;
   box-shadow: 0 0 2px #011627;
 }
@@ -609,7 +613,7 @@ textarea {
 /* Create Topic */
 
 #new-topic-form-container {
-  margin: 3em auto;
+  margin: 1.6em auto 3em;
   border: 2px solid #D3D8D9;
   border-radius: 4px;
   padding: 1em 1em 0;

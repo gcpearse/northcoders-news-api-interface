@@ -29,9 +29,9 @@ const Home = ({ topics, isLoading }) => {
     <>
       <h2 id="home-header">Welcome to Northcoders News</h2>
       <section id="home-intro">
-        {user ? <p className="intro-body">You are currently logged in as <span id="current-user">{user}</span>.</p> : <p className="intro-body">You are not currently logged in, so certain features will not be available.</p>}
-        {!user? <p className="intro-body">To get started, select a username from the dropdown list in the panel.</p> : null}
-        <p className="intro-body">When ready, head over to our <Link className="home-link" to="/news">News</Link> page to begin exploring the articles on the site.</p>
+        {user ? <p className="intro-body">You are currently logged in as <span id="current-user">{user}</span>.</p> : <p className="intro-body">You are not currently logged in, so certain features will be unavailable.</p>}
+        {!user? <p className="intro-body">To continue as a logged in user, please select a username from the dropdown list in the panel.</p> : null}
+        <p className="intro-body">When you are ready, head over to our <Link className="home-link" to="/news">News</Link> page to begin exploring the articles on the site.</p>
       </section>
       <article id="trending-topics">
         <h3 className="home-feature-header">Trending topics</h3>
