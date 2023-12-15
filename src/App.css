@@ -568,6 +568,25 @@ textarea {
   margin-top: 1.6em;
 }
 
+#new-topic-btn {
+  margin: 1.6em auto;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4em 0.9em 0.5em;
+  background: #FDFFFC;
+  font-size: 1rem;
+  color: #011627;
+  box-shadow: 0 0 2px #011627;
+}
+
+#new-topic-btn:hover {
+  background: #96E2D9;
+}
+
+#new-topic-btn:active {
+  background: #73D8CD;
+}
+
 .topic {
   margin: 1.8em auto;
   border-radius: 8px;
