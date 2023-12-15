@@ -6,7 +6,7 @@ const Footer = () => {
           top: 0,
           behavior: "smooth"
         });
-      }}>Back to top</button>
+      }}>&#x25B2;</button>
     </footer>
   );
 };
