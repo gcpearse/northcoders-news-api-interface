@@ -90,9 +90,10 @@ nav {
   margin-left: 0.8em;
   border: 1px ridge #011627;
   border-radius: 6px;
+  padding: 0 1em;
   background: #E6EAE9;
   line-height: 1.7rem;
-  width: 5.2em;
+  width: auto;
   color: #011627;
 }
 
