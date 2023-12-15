@@ -129,6 +129,11 @@ const News = ({ topics }) => {
           </button>
         </div>
       </div>
+      {!articles.length ? <div className="error-section">
+        <p className="error-body">
+          No articles found for {topicQuery[0].toUpperCase() + topicQuery.slice(1).toLowerCase()}
+        </p>
+      </div> : null}
       <ul id="articles-list">
         {articles.map((article) => {
           return <Article key={article.article_id} article={article} />;
