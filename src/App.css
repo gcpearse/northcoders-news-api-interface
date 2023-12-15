@@ -602,6 +602,12 @@ textarea {
   max-width: 80vw;
 }
 
+#new-topic-form-header {
+  margin: 0.4em auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 #new-topic-form {
   display: flex;
   flex-direction: column;
@@ -617,7 +623,8 @@ textarea {
 }
 
 .new-topic-btn {
-  margin: 1.1em auto 0;
+  margin: 1.4em auto 0;
+  width: 86px;
 }
 
 .topic {
