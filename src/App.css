@@ -135,7 +135,7 @@ a {
 
 /* Error */
 
-#error-section {
+.error-section {
   margin: 2em auto;
   border: 3px solid #E71D36;
   border-radius: 15px;
@@ -145,10 +145,14 @@ a {
   max-width: 90vw;
 }
 
-#error-header {
+.error-header {
   margin: 0.6em auto;
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.error-body {
+  margin: 0.2em auto;
 }
 
 /* Home Page */
@@ -185,6 +189,11 @@ a {
 .home-link {
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+#trending-topics-loading-msg {
+  margin: 1.8em auto;
+  color: #55646E;
 }
 
 #trending-topics {
@@ -568,11 +577,87 @@ textarea {
   margin-top: 1.6em;
 }
 
+#new-topic-btn {
+  margin: 1.6em auto 0;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4em 0.9em 0.5em;
+  background: #FDFFFC;
+  font-size: 1rem;
+  color: #011627;
+  box-shadow: 0 0 2px #011627;
+}
+
+#new-topic-btn:hover {
+  background: #96E2D9;
+}
+
+#new-topic-btn:active {
+  background: #73D8CD;
+}
+
+#new-topic-error {
+  margin-top: 1.6em;
+}
+
+#success-container {
+  margin: 1.6em auto auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1em;
+  background: #FDFFFC;
+  height: auto;
+  width: 360px;
+  max-width: 80vw;
+}
+
+#success-msg {
+  margin-bottom: 1em;
+}
+
+/* Create Topic */
+
+#new-topic-form-container {
+  margin: 3em auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1em 1em 0;
+  background: #FDFFFC;
+  height: auto;
+  width: 360px;
+  max-width: 80vw;
+}
+
+#new-topic-form-header {
+  margin: 0.4em auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#new-topic-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-topic-label {
+  text-align: start;
+  margin: 0.6em;
+}
+
+.new-topic-input {
+  line-height: 1.2rem;
+}
+
+.new-topic-btn {
+  margin: 1.4em auto 0;
+  width: 86px;
+}
+
 .topic {
   margin: 1.8em auto;
   border-radius: 8px;
   padding: 1em;
-  background: #FDFFFC;
+  background: #FDEFD7;
   width: 360px;
   max-width: 80vw;
   box-shadow: 0 0 4px #011627;
@@ -580,11 +665,11 @@ textarea {
 
 .topic:hover {
   cursor: pointer;
-  background: #FECF8C;
+  background: #FEDFB1;
 }
 
 .topic:active {
-  background: #FEBF67;
+  background: #FECF8C;
 }
 
 #topic-header {
@@ -637,16 +722,13 @@ footer {
   bottom: 0;
   right: 0;
   border: none;
-  border-top: 2px solid #D3D8D9;
-  border-left: 2px solid #D3D8D9;
   border-radius: 4px 0 0 0;
-  padding: 0.4rem 0.6rem;
+  padding: 0.8rem 1.2rem;
   background: #FDFFFC;
   color: #011627;
   font-weight: 500;
 }
 
 #scroll-up-btn:active {
-  border-top: 2px solid #FDFFFC;
-  border-left: 2px solid #FDFFFC;
+  color: #55646E;
 }

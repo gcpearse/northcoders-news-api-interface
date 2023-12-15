@@ -17,7 +17,12 @@ const Contents = () => {
   useEffect(() => {
     getTopics()
       .then(({ topics }) => {
-        setTopics(topics);
+        const sortedTopics = topics.sort((a, b) => {
+          if (a.slug > b.slug) return 1;
+          if (a.slug < b.slug) return -1;
+          return 0;
+        })
+        setTopics(sortedTopics);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -30,7 +35,7 @@ const Contents = () => {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home topics={topics} />}></Route>
+        <Route path="/" element={<Home topics={topics} isLoading={isLoading} />}></Route>
         <Route path="/news" element={<News topics={topics} />}></Route>
         <Route path="/news/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>

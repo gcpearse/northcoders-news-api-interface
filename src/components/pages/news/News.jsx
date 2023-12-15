@@ -83,11 +83,7 @@ const News = ({ topics }) => {
               defaultValue={topicQuery}
               onChange={handleTopicChange}>
               <option value="">All topics</option>
-              {topics.sort((a, b) => {
-                if (a.slug > b.slug) return 1;
-                if (a.slug < b.slug) return -1;
-                return 0;
-              }).map((topic) => {
+              {topics.map((topic) => {
                 return <option key={topic.slug} value={topic.slug}>
                   {topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}
                 </option>;
@@ -133,6 +129,11 @@ const News = ({ topics }) => {
           </button>
         </div>
       </div>
+      {!articles.length ? <div className="error-section">
+        <p className="error-body">
+          No articles found for {topicQuery[0].toUpperCase() + topicQuery.slice(1).toLowerCase()}
+        </p>
+      </div> : null}
       <ul id="articles-list">
         {articles.map((article) => {
           return <Article key={article.article_id} article={article} />;

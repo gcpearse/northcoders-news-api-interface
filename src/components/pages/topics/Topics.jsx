@@ -1,6 +1,24 @@
+import { useContext, useState } from "react";
+import CreateTopic from "./CreateTopic";
 import Topic from "./Topic";
+import { UserContext } from "../../../contexts/UserContext";
+import CreateTopicViewer from "./CreateTopicViewer";
 
-const Topics = ({ topics, isLoading, isError }) => {
+const Topics = ({ topics, setTopics, isLoading, isError }) => {
+
+  const { user } = useContext(UserContext);
+
+  const [showCreateTopic, setShowCreateTopic] = useState(false);
+  const [successMsg, setSuccessMsg] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleClick = () => {
+    if (user) {
+      setShowCreateTopic(true);
+    } else {
+      setError("You must be logged in to create a topic.");
+    }
+  };
 
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <p>Oops! Something went wrong...</p>;
@@ -8,12 +26,31 @@ const Topics = ({ topics, isLoading, isError }) => {
   return (
     <section>
       <p id="topics-intro">Click on any topic to view associated articles.</p>
+      {!showCreateTopic ? <button
+        id="new-topic-btn"
+        onClick={handleClick}
+        onBlur={() => setError(null)}>
+        Create a new topic
+      </button> : null}
+      {successMsg ? <div id="success-container">
+        <p id="success-msg">Thanks! Your new topic has been added.</p>
+        <button
+        className="grey-btn"
+        id="ok-btn"
+        onClick={() => setSuccessMsg(false)}>
+          Ok
+        </button>
+      </div> : null}
+      {error ? <p className="error" id="new-topic-error">{error}</p> : null}
+      <CreateTopicViewer showCreateTopic={showCreateTopic}>
+        <CreateTopic
+          setShowCreateTopic={setShowCreateTopic}
+          topics={topics}
+          setTopics={setTopics}
+          setSuccessMsg={setSuccessMsg} />
+      </CreateTopicViewer>
       <ul>
-        {topics.sort((a, b) => {
-          if (a.slug > b.slug) return 1;
-          if (a.slug < b.slug) return -1;
-          return 0;
-        }).map((topic) => {
+        {topics.map((topic) => {
           return <Topic key={topic.slug} topic={topic} />;
         })}
       </ul>
