@@ -591,6 +591,23 @@ textarea {
   margin-top: 1.6em;
 }
 
+#success-container {
+  margin: 1.6em auto auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1em;
+  background: #FDFFFC;
+  height: auto;
+  width: 360px;
+  max-width: 80vw;
+}
+
+#success-msg {
+  margin-bottom: 1em;
+}
+
+/* Create Topic */
+
 #new-topic-form-container {
   margin: 3em auto;
   border: 2px solid #D3D8D9;
