@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { postTopic } from "../../../utils/api-utils";
 
-const CreateTopic = ({ setShowCreateTopic, topics, setTopics }) => {
+const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) => {
 
   const [slug, setSlug] = useState("");
   const [desc, setDesc] = useState("");
@@ -34,9 +34,14 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics }) => {
       postTopic(topic)
         .then(() => {
           setTopics((currentTopics) => {
-            return [...currentTopics, topic];
+            return [...currentTopics, topic].sort((a, b) => {
+              if (a.slug > b.slug) return 1;
+              if (a.slug < b.slug) return -1;
+              return 0;
+            });
           });
           setShowCreateTopic(false);
+          setSuccessMsg(true);
         })
         .catch((err) => {
           console.log(err);
