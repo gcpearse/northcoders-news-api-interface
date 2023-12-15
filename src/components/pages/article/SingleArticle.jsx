@@ -110,13 +110,13 @@ const SingleArticle = () => {
               className="vote-btn upvote-btn"
               onClick={handleUpvote}
               onBlur={() => setError(null)}>
-              +
+              &#11014;
             </button>
             <button
               className="vote-btn downvote-btn"
               onClick={handleDownVote}
               onBlur={() => setError(null)}>
-              -
+              &#11015;
             </button>
           </div>
         </div>

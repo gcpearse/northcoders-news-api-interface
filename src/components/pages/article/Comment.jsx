@@ -52,8 +52,12 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           Delete
         </button>}
         <div>
-          <button className="vote-btn upvote-btn">+</button>
-          <button className="vote-btn downvote-btn">-</button>
+          <button className="vote-btn upvote-btn">
+            &#11014;
+          </button>
+          <button className="vote-btn downvote-btn">
+            &#11015;
+          </button>
         </div>
       </div>
       <p className="error">{comment.error}</p>

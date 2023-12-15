@@ -91,6 +91,7 @@ nav {
   border-radius: 6px;
   background: #E6EAE9;
   line-height: 1.2rem;
+  color: #011627;
 }
 
 #login-btn:hover,
@@ -398,6 +399,7 @@ a {
   padding: 0.4em 0.9em 0.5em;
   background: #E6EAE9;
   font-size: 0.95rem;
+  color: #011627;
 }
 
 .grey-btn:hover {
@@ -411,10 +413,8 @@ a {
 .vote-btn {
   border: 1px solid #D3D8D9;
   background: #E6EAE9;
-  padding-bottom: 1.3em;
-  height: 25.6px;
-  width: 32px;
-  font-size: 1.2rem;
+  height: 2.4em;
+  width: 3em;
 }
 
 .upvote-btn {
