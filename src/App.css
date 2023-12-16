@@ -349,6 +349,10 @@ a {
   height: 500px;
 }
 
+#article:hover {
+  box-shadow: 0 0 2px #011627;
+}
+
 .article-topic,
 .article-title,
 .article-text,
