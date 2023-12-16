@@ -9,8 +9,7 @@ const Login = () => {
 
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
-  const [loginBtn, setLoginBtn] = useState("Log in");
-  const [visibility, setVisibility] = useState("visible-element");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getUsers()
@@ -29,40 +28,49 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (input && !user) {
-      setVisibility("invisible-element");
-      setLoginBtn("Log out");
       setUser(input);
+      setInput("");
     } else {
-      setVisibility("visible-element");
-      setLoginBtn("Log in");
-      setUser("");
+      setError(true);
     }
   };
 
-  return (
-    <section id="login-bar">
-      {user ? <p>Hello, {user}!</p> : null}
-      <form onSubmit={handleSubmit} id="login-form">
-        <label htmlFor="user-selection">
-          <select
-            name="users"
-            className={visibility}
-            id="user-selection"
-            onChange={handleChange}>
-            <option value="">Select username</option>
-            {users.map((user) => {
-              return <option key={user.username} value={user.username}>{user.username}</option>;
-            })}
-          </select>
-        </label>
-        <input
+  if (!user) {
+    return (
+      <section className="login-bar">
+        <form onSubmit={handleSubmit} onBlur={() => setError(false)} id="login-form">
+          <label htmlFor="user-selection">
+            <select
+              name="users"
+              className={error ? "login-error" : null}
+              id="user-selection"
+              onChange={handleChange}>
+              <option value="">Select username</option>
+              {users.map((user) => {
+                return <option key={user.username} value={user.username}>{user.username}</option>;
+              })}
+            </select>
+          </label>
+          <input
+            type="submit"
+            value="Log in"
+            className="login-btn" />
+        </form>
+      </section>
+    );
+  } else {
+    return (
+      <section className="login-bar">
+        <p>Hello, {user}!</p>
+        <button
           type="submit"
-          value={loginBtn}
-          className="select-btn"
-          id="login-btn" />
-      </form>
-    </section>
-  );
+          className="login-btn"
+          onClick={() => setUser("")}>
+          Log out
+        </button>
+      </section>
+    );
+  }
 };
 
 export default Login;

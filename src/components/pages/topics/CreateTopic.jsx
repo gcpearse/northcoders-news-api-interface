@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { postTopic } from "../../../utils/api-utils";
 import { UserContext } from "../../../contexts/UserContext";
-import Error from "../../Error";
+import { useNavigate } from "react-router-dom";
 
 const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) => {
 
   const { user } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const [slug, setSlug] = useState("");
   const [desc, setDesc] = useState("");
@@ -114,7 +116,17 @@ const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) =
       </div>
     );
   } else {
-    return <Error message={"You must be logged in to use this feature."} />
+    return (
+      <section className="error-section">
+        <h2 className="error-header">Error</h2>
+        <p>You must be logged in to use this feature.</p>
+        <button
+          className="site-nav-btn"
+          onClick={() => navigate(0)}>
+          Close
+        </button>
+      </section>
+    );
   }
 };
 
