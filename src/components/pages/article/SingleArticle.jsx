@@ -97,8 +97,12 @@ const SingleArticle = () => {
         </Link>
         <p className="text-body">{singleArticle.body}</p>
         <div className="count-container">
-          <p>{singleArticle.comment_count} comments</p>
-          <p>{singleArticle.votes} {formatWord(singleArticle.votes)}</p>
+          <p id="single-article-comments" onClick={() => setShowComments(!showComments)}>
+            {singleArticle.comment_count} comments
+          </p>
+          <p>
+            {singleArticle.votes} {formatWord(singleArticle.votes)}
+          </p>
         </div>
         {error ? <p className="error">{error}</p> : null}
         <div className="section-btns" id="single-article-btns">
