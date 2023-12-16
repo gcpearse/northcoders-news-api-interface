@@ -30,7 +30,7 @@ const Home = ({ topics, isLoading }) => {
       <h2 id="home-header">Welcome to Northcoders News</h2>
       <section id="home-intro">
         {user ? <p className="intro-body">You are currently logged in as <span id="current-user">{user}</span>.</p> : <p className="intro-body">You are not currently logged in, so certain features will be unavailable.</p>}
-        {!user? <p className="intro-body">To continue as a logged in user, please select a username from the dropdown list in the panel.</p> : null}
+        {!user ? <p className="intro-body">To continue as a logged in user, please select a username from the dropdown list in the panel.</p> : null}
         <p className="intro-body">When you are ready, head over to our <Link className="home-link" to="/news">News</Link> page to begin exploring the articles on the site.</p>
       </section>
       <article id="trending-topics">
@@ -42,9 +42,16 @@ const Home = ({ topics, isLoading }) => {
           })[index]}
         </ul>
         <div id="cycle-btns">
-          <button className="cycle-btn" onClick={handleLeftClick}>&#10094;</button>
-          <button id="reset-btn" onClick={() => setIndex(0)}>Reset</button>
-          <button className="cycle-btn" onClick={handleRightClick}>&#10095;</button>
+          <button
+            className="cycle-btn"
+            onClick={handleLeftClick}>
+            &#10094;
+          </button>
+          <button
+            className="cycle-btn"
+            onClick={handleRightClick}>
+            &#10095;
+          </button>
         </div>
       </article>
     </>
