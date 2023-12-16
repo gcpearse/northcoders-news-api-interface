@@ -355,13 +355,6 @@ a {
   margin: 0 auto;
 }
 
-@media (min-width: 1280px) {
-  #articles-list {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-}
-
 .article-container {
   margin: 1em;
   width: 400px;
