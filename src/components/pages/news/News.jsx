@@ -13,8 +13,7 @@ const News = ({ topics }) => {
   const pageQuery = searchParams.get("p");
 
   const [articles, setArticles] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageLimit, setPageLimit] = useState(null);
+  const [pageLimit, setPageLimit] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [apiError, setApiError] = useState(null);
@@ -62,20 +61,27 @@ const News = ({ topics }) => {
   };
 
   const handleTopicChange = (event) => {
+    if (searchParams.has("p")) {
+      const page = searchParams.get("p");
+      if (page) {
+        searchParams.delete("p");
+        setSearchParams(searchParams);
+      }
+    }
     setTopicQuery(event.target.value);
   };
 
   const handleLeftClick = () => {
+    const currentPage = +pageQuery || 1;
     if (currentPage > 1) {
       setPageQuery(currentPage - 1);
-      setCurrentPage(currentPage - 1);
     }
   };
 
   const handleRightClick = () => {
+    const currentPage = +pageQuery || 1;
     if (currentPage < pageLimit) {
       setPageQuery(currentPage + 1);
-      setCurrentPage(currentPage + 1);
     }
   };
 
@@ -150,14 +156,14 @@ const News = ({ topics }) => {
         <button
           className="pagination-btn"
           onClick={handleLeftClick}
-          disabled={currentPage === 1}>
+          disabled={!pageQuery || +pageQuery === 1}>
           &#10094;
         </button>
-        <p className="pagination-body">Page {currentPage} of {pageLimit}</p>
+        <p className="pagination-body">Page {pageQuery || 1} of {pageLimit}</p>
         <button
           className="pagination-btn"
           onClick={handleRightClick}
-          disabled={currentPage === pageLimit}>
+          disabled={+pageQuery === pageLimit}>
           &#10095;
         </button>
       </div> : null}
