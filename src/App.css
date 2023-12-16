@@ -150,6 +150,36 @@ a {
   margin: 0.2em auto;
 }
 
+/* Pagination */
+
+.pagination-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0.4em auto;
+  width: 360px;
+  max-width: 90vw;
+}
+
+.pagination-body {
+  font-size: 1.1rem;
+}
+
+.pagination-btn {
+  border: none;
+  border-radius: 100%;
+  background: #FDFFFC;
+  height: 2.8em;
+  width: 2.8em;
+  font-size: 1.1rem;
+  color: #011627;
+}
+
+.pagination-btn:disabled {
+  cursor: auto;
+  color: #D3D8D9;
+}
+
 /* Home Page */
 
 #home-header {
@@ -323,13 +353,6 @@ a {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 0 auto;
-}
-
-@media (min-width: 1280px) {
-  #articles-list {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
 }
 
 .article-container {

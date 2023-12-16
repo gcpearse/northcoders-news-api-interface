@@ -2,24 +2,21 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://northcoders-news-api-twr1.onrender.com/api" });
 
-const getArticles = async (topic, sortBy, order) => {
+const getArticles = async (topic, sortBy, order, page) => {
   try {
     const res = await api.get("/articles", {
       params: {
         topic: topic,
         sort_by: sortBy,
-        order: order
+        order: order,
+        p: page
       }
     });
     return res.data;
   } catch (err) {
     console.log(err);
     if (err.response.status === 404) {
-      if (err.response.config.params.topic) {
-        return Promise.reject({ message: "That topic does not exist!" });
-      } else {
-        return Promise.reject({ message: "That page does not exist!" });
-      }
+      return Promise.reject({ message: "That page does not exist!" });
     }
     if (err.response.status === 400) {
       return Promise.reject({ message: "Bad request!" });
