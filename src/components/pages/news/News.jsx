@@ -10,16 +10,20 @@ const News = ({ topics }) => {
   const sortByQuery = searchParams.get("sort_by");
   const topicQuery = searchParams.get("topic");
   const orderQuery = searchParams.get("order");
+  const pageQuery = searchParams.get("p");
 
   const [articles, setArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageLimit, setPageLimit] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
-    getArticles(topicQuery, sortByQuery, orderQuery)
-      .then(({ articles }) => {
+    getArticles(topicQuery, sortByQuery, orderQuery, pageQuery)
+      .then(({ articles, full_count }) => {
         setArticles(articles);
+        setPageLimit(Math.ceil(full_count / 10));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -27,7 +31,7 @@ const News = ({ topics }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [sortByQuery, topicQuery, orderQuery]);
+  }, [sortByQuery, topicQuery, orderQuery, pageQuery]);
 
   const setSortByQuery = (sortBy) => {
     const newParams = new URLSearchParams(searchParams);
@@ -47,12 +51,32 @@ const News = ({ topics }) => {
     setSearchParams(newParams);
   };
 
+  const setPageQuery = (page) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("p", page);
+    setSearchParams(newParams);
+  };
+
   const handleSortByChange = (event) => {
     setSortByQuery(event.target.value);
   };
 
   const handleTopicChange = (event) => {
     setTopicQuery(event.target.value);
+  };
+
+  const handleLeftClick = () => {
+    if (currentPage > 1) {
+      setPageQuery(currentPage - 1);
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleRightClick = () => {
+    if (currentPage < pageLimit) {
+      setPageQuery(currentPage + 1);
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   if (isLoading) return <p>Loading content...</p>;
@@ -122,6 +146,21 @@ const News = ({ topics }) => {
           return <Article key={article.article_id} article={article} />;
         })}
       </ul>
+      {pageLimit ? <div className="pagination-section">
+        <button
+          className="pagination-btn"
+          onClick={handleLeftClick}
+          disabled={currentPage === 1}>
+          &#10094;
+        </button>
+        <p className="pagination-body">Page {currentPage} of {pageLimit}</p>
+        <button
+          className="pagination-btn"
+          onClick={handleRightClick}
+          disabled={currentPage === pageLimit}>
+          &#10095;
+        </button>
+      </div> : null}
     </section>
   );
 };
