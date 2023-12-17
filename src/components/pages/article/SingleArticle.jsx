@@ -78,7 +78,7 @@ const SingleArticle = () => {
   };
 
   if (isLoading) return <p>Loading content...</p>;
-  if (isError) return <Error message={apiError} />;
+  if (isError) return <Error message={apiError} nav={-1} />;
 
   return (
     <section>

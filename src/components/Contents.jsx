@@ -40,7 +40,7 @@ const Contents = () => {
         <Route path="/articles/new" element={<NewArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>
         <Route path="/users/:username" element={<User />}></Route>
-        <Route path="/*" element={<Error message={"Oops! That page does not exist!"} />}></Route>
+        <Route path="/*" element={<Error message={"Oops! That page does not exist!"} nav={-1} />}></Route>
       </Routes>
     </main>
   );

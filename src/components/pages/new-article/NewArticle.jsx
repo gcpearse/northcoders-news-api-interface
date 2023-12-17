@@ -93,7 +93,7 @@ const NewArticle = () => {
       </section>
     );
   } else {
-    return <Error message={"You must be logged in to use this feature."} />
+    return <Error message={"You must be logged in to use this feature."} nav={-1} />
   }
 };
 
