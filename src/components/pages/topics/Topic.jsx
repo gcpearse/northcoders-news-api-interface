@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../contexts/UserContext";
 
 const Topic = ({ topic }) => {
+
+  const { user } = useContext(UserContext);
+
   return (
     <div className="topic">
       <li>
@@ -17,7 +22,10 @@ const Topic = ({ topic }) => {
         </Link>
       </li>
       <Link to={`/articles/new?topic=${topic.slug}`}>
-        <button className="grey-btn" id="contribute-btn">
+        <button
+          className="grey-btn"
+          id="contribute-btn"
+          disabled={!user}>
           Post an article
         </button>
       </Link>

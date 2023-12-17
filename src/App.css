@@ -668,6 +668,12 @@ textarea {
   margin-top: 0.6em;
 }
 
+#contribute-btn:disabled {
+  cursor:default;
+  background: #E6EAE9;
+  color: #B8BFC2;
+}
+
 /* User Page */
 
 #user-profile {

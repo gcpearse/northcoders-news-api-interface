@@ -1,14 +1,11 @@
 import { useContext, useState } from "react";
 import { postTopic } from "../../../utils/api-utils";
 import { UserContext } from "../../../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
 import Error from "../../Error";
 
 const CreateTopic = ({ setShowCreateTopic, topics, setTopics, setSuccessMsg }) => {
 
   const { user } = useContext(UserContext);
-
-  const navigate = useNavigate();
 
   const [slug, setSlug] = useState("");
   const [desc, setDesc] = useState("");
