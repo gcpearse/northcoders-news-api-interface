@@ -42,7 +42,7 @@ const News = ({ topics }) => {
   return (
     <section>
       <div id="search-bar">
-        <form>
+        <form id="search-form">
           <FilterBy
             topics={topics}
             searchParams={searchParams}

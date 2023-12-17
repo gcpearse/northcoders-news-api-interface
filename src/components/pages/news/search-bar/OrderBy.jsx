@@ -11,20 +11,22 @@ const OrderBy = ({ searchParams, setSearchParams, orderQuery }) => {
       <span>
         Order
       </span>
-      <button
-        className="order-btn"
-        id="asc-btn"
-        onClick={() => setOrderQuery("asc")}
-        disabled={orderQuery === "asc"}>
-        Ascending
-      </button>
-      <button
-        className="order-btn"
-        id="desc-btn"
-        onClick={() => setOrderQuery("desc")}
-        disabled={!orderQuery || orderQuery === "desc"}>
-        Descending
-      </button>
+      <div id="order-btn-container">
+        <button
+          className="order-btn"
+          id="asc-btn"
+          onClick={() => setOrderQuery("asc")}
+          disabled={orderQuery === "asc"}>
+          Ascending
+        </button>
+        <button
+          className="order-btn"
+          id="desc-btn"
+          onClick={() => setOrderQuery("desc")}
+          disabled={!orderQuery || orderQuery === "desc"}>
+          Descending
+        </button>
+      </div>
     </div>
   );
 };
