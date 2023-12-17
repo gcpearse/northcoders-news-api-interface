@@ -21,7 +21,7 @@ const User = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setApiError(err.message)
+        setApiError(err.message);
         setIsLoading(false);
         setIsError(true);
       });
@@ -33,10 +33,19 @@ const User = () => {
   return (
     <section>
       <div id="user-profile">
-        <h2 id="user-username">User profile for {user.username}</h2>
-        <img src={user.avatar_url} alt="The user's avatar" id="user-avatar" />
+        <h2 id="user-username">
+          User profile for {user.username}
+        </h2>
+        <img
+          src={user.avatar_url}
+          alt="The user's avatar"
+          id="user-avatar" />
       </div>
-      <button className="site-nav-btn" onClick={() => navigate(-1)}>Back</button>
+      <button
+        className="site-nav-btn"
+        onClick={() => navigate(-1)}>
+        Back
+      </button>
     </section>
   );
 };

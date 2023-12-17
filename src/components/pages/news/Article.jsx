@@ -8,7 +8,7 @@ const Article = ({ article }) => {
 
   return (
     <div className="article-container">
-      <Link to={`/news/articles/${article.article_id}`}>
+      <Link to={`/articles/${article.article_id}`}>
         <li id="article">
           <p className="article-topic">
             <span className="topic-keyword">
