@@ -21,7 +21,7 @@ const Contents = () => {
           if (a.slug > b.slug) return 1;
           if (a.slug < b.slug) return -1;
           return 0;
-        })
+        });
         setTopics(sortedTopics);
         setIsLoading(false);
       })
@@ -35,9 +35,9 @@ const Contents = () => {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home topics={topics} isLoading={isLoading} />}></Route>
-        <Route path="/news" element={<News topics={topics} />}></Route>
-        <Route path="/news/articles/:article_id" element={<SingleArticle />}></Route>
+        <Route path="/" element={<News topics={topics} />}></Route>
+        <Route path="/home" element={<Home topics={topics} isLoading={isLoading} />}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>
         <Route path="/users/:username" element={<User />}></Route>
         <Route path="/*" element={<Error message={"Oops! That page does not exist!"} />}></Route>

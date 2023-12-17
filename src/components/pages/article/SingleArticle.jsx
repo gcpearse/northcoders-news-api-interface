@@ -128,7 +128,7 @@ const SingleArticle = () => {
           <Comments article_id={article_id} toggle={toggle} setToggle={setToggle} />
         </CommentViewer>
       </div>
-      <Link to="/news">
+      <Link to="/">
         <button className="site-nav-btn">Back to News</button>
       </Link>
     </section>
