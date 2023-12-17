@@ -315,7 +315,7 @@ a {
   margin-left: 0.5em;
   border-radius: 4px;
   height: 1.9rem;
-  width: 100px;
+  width: auto;
 }
 
 #order-btn-container {
