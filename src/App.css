@@ -277,7 +277,9 @@ a {
   height: 500px;
 }
 
-#article:hover {
+#article:hover,
+.topic:hover {
+  cursor: pointer;
   box-shadow: 0 0 2px #011627;
 }
 
@@ -504,6 +506,48 @@ textarea {
   background: #BD1C33;
 }
 
+/* New Article Page */
+
+#new-article {
+  margin: 1em auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1.2em 1em 0;
+  background: #FDFFFC;
+  height: auto;
+  width: 82vw;
+  max-width: 1000px;
+}
+
+#new-article-header {
+  margin-bottom: 0.6em;
+  font-weight: 500;
+}
+
+#new-article-form {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.new-article-input,
+#new-article-body {
+  margin: 0.5em 0 1em;
+}
+
+.clear-btn {
+  align-self: flex-end;
+}
+
+#new-article-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+#new-article-submit-btn {
+  margin-right: 1em;
+}
+
 /* Topics Page */
 
 #topics-header {
@@ -606,10 +650,6 @@ textarea {
   width: 360px;
   max-width: 80vw;
   text-align: end;
-}
-
-.topic:hover {
-  cursor: pointer;
 }
 
 #topic-header {
