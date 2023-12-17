@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home/Home";
 import News from "./pages/news/News";
 import Topics from "./pages/topics/Topics";
 import SingleArticle from "./pages/article/SingleArticle";
@@ -36,7 +35,6 @@ const Contents = () => {
     <main>
       <Routes>
         <Route path="/" element={<News topics={topics} />}></Route>
-        <Route path="/home" element={<Home topics={topics} isLoading={isLoading} />}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics topics={topics} setTopics={setTopics} isLoading={isLoading} isError={isError} />}></Route>
         <Route path="/users/:username" element={<User />}></Route>
