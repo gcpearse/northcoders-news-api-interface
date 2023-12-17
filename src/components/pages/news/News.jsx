@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getArticles } from "../../../utils/api-utils";
 import Article from "./Article";
-import { useSearchParams } from "react-router-dom";
 import Error from "../../Error";
+import OrderBy from "./search-bar/OrderBy";
+import Pagination from "../../Pagination";
+import FilterBy from "./search-bar/FilterBy";
+import SortBy from "./search-bar/SortBy";
 
 const News = ({ topics }) => {
 
@@ -32,59 +36,6 @@ const News = ({ topics }) => {
       });
   }, [sortByQuery, topicQuery, orderQuery, pageQuery]);
 
-  const setSortByQuery = (sortBy) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("sort_by", sortBy);
-    setSearchParams(newParams);
-  };
-
-  const setTopicQuery = (topic) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("topic", topic);
-    setSearchParams(newParams);
-  };
-
-  const setOrderQuery = (order) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("order", order);
-    setSearchParams(newParams);
-  };
-
-  const setPageQuery = (page) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("p", page);
-    setSearchParams(newParams);
-  };
-
-  const handleSortByChange = (event) => {
-    setSortByQuery(event.target.value);
-  };
-
-  const handleTopicChange = (event) => {
-    if (searchParams.has("p")) {
-      const page = searchParams.get("p");
-      if (page) {
-        searchParams.delete("p");
-        setSearchParams(searchParams);
-      }
-    }
-    setTopicQuery(event.target.value);
-  };
-
-  const handleLeftClick = () => {
-    const currentPage = +pageQuery || 1;
-    if (currentPage > 1) {
-      setPageQuery(currentPage - 1);
-    }
-  };
-
-  const handleRightClick = () => {
-    const currentPage = +pageQuery || 1;
-    if (currentPage < pageLimit) {
-      setPageQuery(currentPage + 1);
-    }
-  };
-
   if (isLoading) return <p>Loading content...</p>;
   if (isError) return <Error message={apiError} />;
 
@@ -92,55 +43,20 @@ const News = ({ topics }) => {
     <section>
       <div id="search-bar">
         <form>
-          <label id="topic-label" htmlFor="topic-dropdown">
-            Search
-            <select
-              name="topic"
-              id="topic-dropdown"
-              defaultValue={topicQuery}
-              onChange={handleTopicChange}>
-              <option value="">All topics</option>
-              {topics.map((topic) => {
-                return <option key={topic.slug} value={topic.slug}>
-                  {topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}
-                </option>;
-              })}
-            </select>
-          </label>
-          <label id="sort-by-label" htmlFor="sort-by-dropdown">
-            Sort by
-            <select
-              name="sort-by"
-              id="sort-by-dropdown"
-              defaultValue={sortByQuery || "created_at"}
-              onChange={handleSortByChange}>
-              <option value="author">Author</option>
-              <option value="comment_count">Comment count</option>
-              <option value="created_at">Date created</option>
-              <option value="title">Title</option>
-              <option value="votes">Votes</option>
-            </select>
-          </label>
+          <FilterBy
+            topics={topics}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            topicQuery={topicQuery} />
+          <SortBy
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            sortByQuery={sortByQuery} />
         </form>
-        <div id="order-btns">
-          <span>
-            Order
-          </span>
-          <button
-            className="order-btn"
-            id="asc-btn"
-            onClick={() => setOrderQuery("asc")}
-            disabled={orderQuery === "asc"}>
-            Ascending
-          </button>
-          <button
-            className="order-btn"
-            id="desc-btn"
-            onClick={() => setOrderQuery("desc")}
-            disabled={!orderQuery || orderQuery === "desc"}>
-            Descending
-          </button>
-        </div>
+        <OrderBy
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          orderQuery={orderQuery} />
       </div>
       {!articles.length ? <div className="error-section">
         <p className="error-body">
@@ -152,21 +68,11 @@ const News = ({ topics }) => {
           return <Article key={article.article_id} article={article} />;
         })}
       </ul>
-      {pageLimit ? <div className="pagination-section">
-        <button
-          className="pagination-btn"
-          onClick={handleLeftClick}
-          disabled={!pageQuery || +pageQuery === 1}>
-          &#10094;
-        </button>
-        <p className="pagination-body">Page {pageQuery || 1} of {pageLimit}</p>
-        <button
-          className="pagination-btn"
-          onClick={handleRightClick}
-          disabled={+pageQuery === pageLimit}>
-          &#10095;
-        </button>
-      </div> : null}
+      {pageLimit ? <Pagination
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+        pageQuery={pageQuery}
+        pageLimit={pageLimit} /> : null}
     </section>
   );
 };
