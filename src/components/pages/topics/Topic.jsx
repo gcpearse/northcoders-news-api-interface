@@ -16,9 +16,11 @@ const Topic = ({ topic }) => {
           </p>
         </Link>
       </li>
-      <button className="grey-btn" id="contribute-btn">
-        Contribute
-      </button>
+      <Link to={`/articles/new?topic=${topic.slug}`}>
+        <button className="grey-btn" id="contribute-btn">
+          Post an article
+        </button>
+      </Link>
     </div>
   );
 };
