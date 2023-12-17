@@ -7,7 +7,8 @@ const Topic = ({ topic }) => {
         <h2 id="topic-header">
           {topic.slug[0].toUpperCase() + topic.slug.slice(1).toLowerCase()}
         </h2>
-        <p id="topic-body">{topic.description}</p>
+        <p className="topic-body">{topic.description}</p>
+        <p className="topic-body">{topic.article_count} posts for this topic</p>
       </Link>
     </li>
   );
