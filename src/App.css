@@ -313,13 +313,13 @@ a {
 #sort-by-dropdown,
 #topic-dropdown {
   margin-left: 0.5em;
-  padding: 0.1em 0;
+  border-radius: 4px;
+  height: 1.9rem;
   width: 100px;
-  font-size: 0.85rem;
 }
 
 #order-btn-container {
-  margin-left: 1em;
+  margin-left: 0.8em;
 }
 
 #order-btns {
@@ -330,18 +330,18 @@ a {
 .order-btn {
   border: none;
   border-radius: 20px;
+  padding: 0 0.8em;
   background: #E6EAE9;
   line-height: 1.8rem;
+  text-align: center;
 }
 
 #asc-btn {
-  margin-right: 0.6em;
-  width: 6.5em;
+  margin-right: 0.5em;
 }
 
 #desc-btn {
-  margin-left: 0.6em;
-  width: 6.5em;
+  margin-left: 0.5em;
 }
 
 .order-btn:disabled:hover,
