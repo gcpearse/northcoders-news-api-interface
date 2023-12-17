@@ -624,6 +624,10 @@ textarea {
   text-align: start;
 }
 
+#contribute-btn {
+  margin-top: 0.6em;
+}
+
 /* User Page */
 
 #user-profile {
