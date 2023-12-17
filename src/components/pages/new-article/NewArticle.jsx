@@ -25,11 +25,18 @@ const NewArticle = () => {
     setContent(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('submit')
+  };
+
   if (user) {
     return (
       <section id="new-article">
         <h2 id="new-article-header">Post a new article</h2>
-        <form id="new-article-form">
+        <form
+          id="new-article-form"
+          onSubmit={handleSubmit}>
           <label htmlFor="new-article-title">
             Title (300 characters max)
           </label>
@@ -93,7 +100,7 @@ const NewArticle = () => {
       </section>
     );
   } else {
-    return <Error message={"You must be logged in to use this feature."} nav={-1} />
+    return <Error message={"You must be logged in to use this feature."} nav={-1} />;
   }
 };
 
