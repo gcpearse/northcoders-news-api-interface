@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../contexts/UserContext";
 
 const Topic = ({ topic }) => {
 
   const { user } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className="topic">
@@ -21,14 +23,13 @@ const Topic = ({ topic }) => {
           </p>
         </Link>
       </li>
-      <Link to={`/articles/new?topic=${topic.slug}`}>
         <button
           className="grey-btn"
           id="contribute-btn"
+          onClick={() => navigate(`/articles/new?topic=${topic.slug}`)}
           disabled={!user}>
-          Post an article
+          {user ? "Post an article" : "Log in to post"}
         </button>
-      </Link>
     </div>
   );
 };
