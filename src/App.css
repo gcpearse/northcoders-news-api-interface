@@ -102,12 +102,12 @@ nav {
   background: #B8BFC2;
 }
 
+/* General */
+
 button:hover,
 select:hover {
   cursor: pointer;
 }
-
-/* General */
 
 main {
   margin: 1em auto 0;
@@ -122,10 +122,6 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-.username-link:hover {
-  color: #1D36E7;
 }
 
 /* Error */
@@ -250,7 +246,7 @@ a {
   background: #E6EAE9;
 }
 
-/* News Page - Articles */
+/* NEWS - Articles */
 
 #articles-list {
   display: flex;
@@ -380,7 +376,7 @@ a {
   background: #F6B4BA;
 }
 
-/* Single Article Page - Article */
+/* ARTICLE - Article */
 
 #single-article {
   margin: 1em auto;
@@ -444,7 +440,7 @@ a {
   }
 }
 
-/* Single Article Page - Comments */
+/* ARTICLE - Comments */
 
 #comments-header {
   margin: 1em auto 0;
@@ -506,7 +502,7 @@ textarea {
   background: #BD1C33;
 }
 
-/* New Article Page */
+/* NEW ARTICLE */
 
 #new-article {
   margin: 1em auto;
@@ -552,7 +548,7 @@ textarea {
   margin-top: 1.4em;
 }
 
-/* Topics Page */
+/* TOPICS */
 
 #topics-header {
   margin-top: 1.2em;
@@ -678,7 +674,11 @@ textarea {
   color: #B8BFC2;
 }
 
-/* User Page */
+/* USER */
+
+.username-link:hover {
+  color: #1D36E7;
+}
 
 #user-profile {
   margin: auto;
