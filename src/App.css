@@ -180,106 +180,6 @@ a {
   color: #D3D8D9;
 }
 
-/* Home Page */
-
-#home-header {
-  margin: 1.6em auto;
-  border: 2px solid #E71D36;
-  border-radius: 6px;
-  padding: 0.5em 0.3em;
-  background: #FDFFFC;
-  font-size: 1.4rem;
-  font-weight: 500;
-  width: 400px;
-  max-width: 88vw;
-}
-
-#home-intro {
-  margin: 0 auto;
-  width: 410px;
-  max-width: 90vw;
-  text-align: justify;
-}
-
-.intro-body {
-  margin-bottom: 0.8em;
-  line-height: 1.4rem;
-}
-
-.home-feature-header {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.home-link {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-#trending-topics-loading-msg {
-  margin: 1.8em auto;
-  color: #55646E;
-}
-
-#trending-topics {
-  margin: 2.2em auto;
-  border-radius: 2px;
-  padding: 1.2em 1em;
-  background: #FDFFFC;
-  width: 220px;
-  max-width: 70vw;
-  font-size: 1.1rem;
-  font-weight: 500;
-  box-shadow: 0 0 4px #011627;
-}
-
-#trending-topic-container {
-  margin: 1.8em 1em;
-}
-
-.trending-topic {
-  border-radius: 10px;
-  padding: 0.8em 0.6em 0.9em;
-  background: #FECF8C;
-  font-weight: 500;
-}
-
-#cycle-btns {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.cycle-btn {
-  border: none;
-  border-radius: 100%;
-  background: #E6EAE9;
-  height: 2.8em;
-  width: 2.8em;
-  color: #011627;
-}
-
-#reset-btn {
-  border: none;
-  border-radius: 10px;
-  background: #E6EAE9;
-  height: 2.4em;
-  width: 4.6em;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #011627;
-}
-
-.cycle-btn:hover,
-#reset-btn:hover {
-  background: #CFD5D5;
-}
-
-.cycle-btn:active,
-#reset-btn:active {
-  background: #B8BFC2;
-}
-
 /* News Page - Search Bar */
 
 #search-bar {
@@ -360,6 +260,7 @@ a {
 }
 
 .article-container {
+  flex-grow: 1;
   margin: 1em;
   width: 400px;
   max-width: 100vw;
@@ -376,7 +277,9 @@ a {
   height: 500px;
 }
 
-#article:hover {
+#article:hover,
+.topic:hover {
+  cursor: pointer;
   box-shadow: 0 0 2px #011627;
 }
 
@@ -603,7 +506,58 @@ textarea {
   background: #BD1C33;
 }
 
+/* New Article Page */
+
+#new-article {
+  margin: 1em auto;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1.2em 1em 0;
+  background: #FDFFFC;
+  height: auto;
+  width: 82vw;
+  max-width: 1000px;
+}
+
+#new-article-header {
+  margin-bottom: 0.6em;
+  font-weight: 500;
+}
+
+#new-article-form {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.new-article-input,
+#new-article-body {
+  margin: 0.5em 0 1em;
+}
+
+.clear-btn {
+  align-self: flex-end;
+}
+
+#new-article-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+#new-article-submit-btn {
+  margin-right: 1em;
+}
+
+#new-article-error {
+  margin-top: 1.4em;
+}
+
 /* Topics Page */
+
+#topics-header {
+  margin-top: 1.2em;
+  font-weight: 600;
+}
 
 #topics-intro {
   margin-top: 1.6em;
@@ -614,18 +568,18 @@ textarea {
   border: none;
   border-radius: 20px;
   padding: 0.6em 1em 0.7em;
-  background: #FDFFFC;
+  background: #96E2D9;
   font-size: 1.1rem;
   color: #011627;
   box-shadow: 0 0 2px #011627;
 }
 
 #new-topic-btn:hover {
-  background: #96E2D9;
+  background: #73D8CD;
 }
 
 #new-topic-btn:active {
-  background: #73D8CD;
+  background: #50CEC2;
 }
 
 #new-topic-error {
@@ -689,32 +643,39 @@ textarea {
   width: 86px;
 }
 
+/* Topic */
+
 .topic {
-  margin: 1.8em auto;
-  border-radius: 8px;
-  padding: 1em;
-  background: #FDEFD7;
+  margin: 1.8em auto 0;
+  border: 2px solid #D3D8D9;
+  border-radius: 4px;
+  padding: 1em 1.4em;
+  background: #FDFFFC;
   width: 360px;
   max-width: 80vw;
-  box-shadow: 0 0 4px #011627;
-}
-
-.topic:hover {
-  cursor: pointer;
-  background: #FEDFB1;
-}
-
-.topic:active {
-  background: #FECF8C;
+  text-align: end;
 }
 
 #topic-header {
-  margin-bottom: 0.5em;
+  font-size: 1.4rem;
   font-weight: 500;
+  text-align: start;
 }
 
 .topic-body {
-  font-size: 0.85em;
+  margin-top: 0.6em;
+  font-size: 0.9em;
+  text-align: start;
+}
+
+#contribute-btn {
+  margin-top: 0.6em;
+}
+
+#contribute-btn:disabled {
+  cursor:default;
+  background: #E6EAE9;
+  color: #B8BFC2;
 }
 
 /* User Page */

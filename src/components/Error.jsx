@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Error = ({ message }) => {
+const Error = ({ message, nav }) => {
 
   const navigate = useNavigate();
 
@@ -10,7 +10,7 @@ const Error = ({ message }) => {
       <p>{message}</p>
       <button
         className="site-nav-btn"
-        onClick={() => navigate(-1)}>
+        onClick={() => navigate(nav)}>
         Back
       </button>
     </section>

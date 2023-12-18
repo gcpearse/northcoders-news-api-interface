@@ -25,7 +25,8 @@ const Topics = ({ topics, setTopics, isLoading, isError }) => {
 
   return (
     <section>
-      <p id="topics-intro">Click on any topic to view associated articles.</p>
+      <h2 id="topics-header">Explore your favourite topics</h2>
+      <p id="topics-intro">Want to create an article but don't see your topic?</p>
       {!showCreateTopic ? <button
         id="new-topic-btn"
         onClick={handleClick}
@@ -49,7 +50,7 @@ const Topics = ({ topics, setTopics, isLoading, isError }) => {
           setTopics={setTopics}
           setSuccessMsg={setSuccessMsg} />
       </CreateTopicViewer>
-      <ul>
+      <ul id="topics-list">
         {topics.map((topic) => {
           return <Topic key={topic.slug} topic={topic} />;
         })}

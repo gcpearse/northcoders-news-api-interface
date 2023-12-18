@@ -84,6 +84,15 @@ const getUserByUsername = async (username) => {
   }
 };
 
+const postArticle = async (body) => {
+  try {
+    const res = await api.post("/articles", body);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const postComment = async (article_id, body) => {
   try {
     const res = await api.post(`/articles/${article_id}/comments`, body);
@@ -93,9 +102,9 @@ const postComment = async (article_id, body) => {
   };
 };
 
-const postTopic = async (topic) => {
+const postTopic = async (body) => {
   try {
-    const res = await (api.post("/topics", topic));
+    const res = await (api.post("/topics", body));
     return res.data;
   } catch (err) {
     console.log(err);
@@ -124,6 +133,7 @@ export {
   getTopics,
   getUsers,
   getUserByUsername,
+  postArticle,
   postComment,
   postTopic,
   patchArticleById,
