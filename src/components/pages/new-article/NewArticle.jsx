@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Error from "../../Error";
+import { postArticle } from "../../../utils/api-utils";
 
 const NewArticle = () => {
 
@@ -9,9 +10,13 @@ const NewArticle = () => {
 
   const navigate = useNavigate();
 
+  const [searchParams] = useSearchParams();
+  const topic = searchParams.get("topic");
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
+  const [error, setError] = useState(null)
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -27,7 +32,20 @@ const NewArticle = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submit')
+    const article = {
+      author: user,
+      title: title,
+      article_img_url: image,
+      body: content,
+      topic: topic
+    };
+    postArticle(article)
+      .then(({ article }) => {
+        navigate(`/articles/${article.article_id}`)
+      })
+      .catch(() => {
+        setError("Oops! Something went wrong...")
+      });
   };
 
   if (user) {
@@ -36,7 +54,8 @@ const NewArticle = () => {
         <h2 id="new-article-header">Post a new article</h2>
         <form
           id="new-article-form"
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit}
+          onBlur={() => setError(null)}>
           <label htmlFor="new-article-title">
             Title (300 characters max)
           </label>
@@ -94,6 +113,7 @@ const NewArticle = () => {
             </button>
           </div>
         </form>
+        {error ? <p className="error" id="new-article-error">{error}</p> : null}
         <button className="site-nav-btn" onClick={() => navigate(-1)}>
           Cancel
         </button>
