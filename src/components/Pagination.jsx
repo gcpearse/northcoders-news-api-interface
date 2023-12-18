@@ -34,7 +34,7 @@ const Pagination = ({ searchParams, setSearchParams, pageQuery, pageLimit }) => 
       <button
         className="pagination-btn"
         onClick={handleRightClick}
-        disabled={+pageQuery === pageLimit}>
+        disabled={+pageQuery === pageLimit || !pageQuery && pageLimit === 1}>
         &#10095;
       </button>
     </div>
