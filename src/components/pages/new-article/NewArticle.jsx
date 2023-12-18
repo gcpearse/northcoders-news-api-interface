@@ -51,7 +51,8 @@ const NewArticle = () => {
   if (user) {
     return (
       <section id="new-article">
-        <h2 id="new-article-header">Post a new article</h2>
+        <h2 className="new-article-header">{topic[0].toUpperCase() + topic.slice(1).toLowerCase()}</h2>
+        <h3 className="new-article-header">Post a new article</h3>
         <form
           id="new-article-form"
           onSubmit={handleSubmit}
