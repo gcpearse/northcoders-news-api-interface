@@ -19,7 +19,7 @@ const Topic = ({ topic }) => {
             {topic.description}
           </p>
           <p className="topic-body" id="topic-article-count">
-            {topic.article_count} articles for this topic
+            {topic.article_count || "No"} {topic.article_count === 1 ? "article" : "articles"} for this topic
           </p>
         </Link>
       </li>

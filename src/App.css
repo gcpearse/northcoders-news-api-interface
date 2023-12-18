@@ -515,7 +515,7 @@ textarea {
   max-width: 1000px;
 }
 
-#new-article-header {
+.new-article-header {
   margin-bottom: 0.6em;
   font-weight: 500;
 }
