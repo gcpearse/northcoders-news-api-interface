@@ -419,6 +419,10 @@ a {
   font-size: 0.9rem;
 }
 
+.vote-error {
+  margin-top: 1em;
+}
+
 #single-article-comments {
   color: #011627;
 }
