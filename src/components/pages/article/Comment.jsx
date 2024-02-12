@@ -12,6 +12,8 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
   const { user } = useContext(UserContext);
 
   const [error, setError] = useState(null);
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+  const [hasDownvoted, setHasDownvoted] = useState(false);
 
   const handleDelete = () => {
     let index = 0;
@@ -38,17 +40,23 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
   };
 
   const handleUpvote = () => {
-    if (user) {
+    if (user && !hasUpvoted) {
       setComments((currentComments) => {
         const updatedComments = currentComments.map((currentComment) => {
           if (currentComment.comment_id === comment.comment_id) {
-            return { ...currentComment, votes: currentComment.votes + 1 };
+            if (hasDownvoted) {
+              return { ...currentComment, votes: currentComment.votes + 2 };
+            } else {
+              return { ...currentComment, votes: currentComment.votes + 1 };
+            }
           }
           return currentComment;
         });
         return updatedComments;
       });
       setError(null);
+      setHasUpvoted(true);
+      setHasDownvoted(false);
       patchCommentById(comment.comment_id, {
         "inc_votes": 1
       })
@@ -65,22 +73,32 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           });
         });
     } else {
-      setError("You must be logged in to vote.");
+      if (!user) {
+        setError("You must be logged in to vote.");
+      } else {
+        setError("You have already upvoted this comment.");
+      }
     }
   };
 
   const handleDownvote = () => {
-    if (user) {
+    if (user && !hasDownvoted) {
       setComments((currentComments) => {
         const updatedComments = currentComments.map((currentComment) => {
           if (currentComment.comment_id === comment.comment_id) {
-            return { ...currentComment, votes: currentComment.votes - 1 };
+            if (hasUpvoted) {
+              return { ...currentComment, votes: currentComment.votes - 2 };
+            } else {
+              return { ...currentComment, votes: currentComment.votes - 1 };
+            }
           }
           return currentComment;
         });
         return updatedComments;
       });
       setError(null);
+      setHasDownvoted(true);
+      setHasUpvoted(false);
       patchCommentById(comment.comment_id, {
         "inc_votes": -1
       })
@@ -97,7 +115,11 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           });
         });
     } else {
-      setError("You must be logged in to vote.");
+      if (!user) {
+        setError("You must be logged in to vote.");
+      } else {
+        setError("You have already downvoted this comment.");
+      }
     }
   };
 
@@ -132,7 +154,7 @@ const Comment = ({ comment, toggle, setToggle, setComments }) => {
           </button>
         </div>
       </div>
-      {error ? <p className="error">{error}</p> : null}
+      {error ? <p className="error vote-error">{error}</p> : null}
       <p className="error">{comment.error}</p>
     </div>
   );
