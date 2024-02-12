@@ -23,6 +23,8 @@ const SingleArticle = () => {
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+  const [hasDownvoted, setHasDownvoted] = useState(false);
 
   useEffect(() => {
     getArticleById((article_id))
@@ -38,11 +40,17 @@ const SingleArticle = () => {
   }, [toggle]);
 
   const handleUpvote = () => {
-    if (user) {
+    if (user && !hasUpvoted) {
       setSingleArticle((currentArticle) => {
-        return { ...currentArticle, votes: currentArticle.votes + 1 };
+        if (hasDownvoted) {
+          return { ...currentArticle, votes: currentArticle.votes + 2 };
+        } else {
+          return { ...currentArticle, votes: currentArticle.votes + 1 };
+        }
       });
       setError(null);
+      setHasUpvoted(true);
+      setHasDownvoted(false);
       patchArticleById(singleArticle.article_id, {
         "inc_votes": 1
       })
@@ -53,16 +61,26 @@ const SingleArticle = () => {
           });
         });
     } else {
-      setError("You must be logged in to vote.");
+      if (!user) {
+        setError("You must be logged in to vote.");
+      } else {
+        setError("You have already upvoted this article.");
+      }
     }
   };
 
   const handleDownvote = () => {
-    if (user) {
+    if (user && !hasDownvoted) {
       setSingleArticle((currentArticle) => {
-        return { ...currentArticle, votes: currentArticle.votes - 1 };
+        if (hasUpvoted) {
+          return { ...currentArticle, votes: currentArticle.votes - 2 };
+        } else {
+          return { ...currentArticle, votes: currentArticle.votes - 1 };
+        };
       });
       setError(null);
+      setHasDownvoted(true);
+      setHasUpvoted(false);
       patchArticleById(singleArticle.article_id, {
         "inc_votes": -1
       })
@@ -73,7 +91,11 @@ const SingleArticle = () => {
           });
         });;
     } else {
-      setError("You must be logged in to vote.");
+      if (!user) {
+        setError("You must be logged in to vote.");
+      } else {
+        setError("You have already downvoted this article.");
+      }
     }
   };
 
@@ -104,7 +126,7 @@ const SingleArticle = () => {
             {singleArticle.votes} {formatWord(singleArticle.votes)}
           </p>
         </div>
-        {error ? <p className="error">{error}</p> : null}
+        {error ? <p className="error vote-error">{error}</p> : null}
         <div className="section-btns" id="single-article-btns">
           <button className="grey-btn" onClick={() => {
             setShowComments(!showComments);
