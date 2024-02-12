@@ -714,18 +714,19 @@ footer {
   width: 100%;
 }
 
-#scroll-up-btn {
+.scroll-up-btn {
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: -60px;
   border: none;
   border-radius: 4px 0 0 0;
   padding: 0.8rem 1.2rem;
   background: #E71D36;
   color: #FDFFFC;
   font-weight: 500;
+  transition: 1s;
 }
 
-#scroll-up-btn:active {
-  color: #55646E;
+.scroll-up-btn-visible {
+  right: 0;
 }
