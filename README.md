@@ -50,7 +50,7 @@ git push -u origin main
 
 ### Prerequisites
 
-Please ensure you have installed Node.js. If you encounter any issues when running the project locally, you may need to use a different version of Node. For example, at the time of writing `v18.17.1` is working well, but `v20.6.0` is not.
+Please ensure you have installed Node.js. If you encounter any issues when running the project locally, you may need to use a different version of Node.
 
 You can check your Node version by running `node --version`. 
 
