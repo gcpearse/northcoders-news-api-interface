@@ -1,6 +1,4 @@
 node_modules
-sandbox.js
-notes.md
-notes.txt
+notes.*
 # Local Netlify folder
 .netlify
